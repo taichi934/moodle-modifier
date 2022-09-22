@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "moodle modifier",
+  "description": "Login automatically and change the layout of Moodle",
+  "version": "1.0.0",
+
+  "icons": {
+    "48": "images/MoodleModifier-logo-icon48.png",
+    "128": "images/MoodleModifier-logo-icon128.png"
+  },
+
+  "content_scripts": [
+    {
+      "exclude_matches": [
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+      ],
+      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+      "js": ["content_scripts/re-layout.js"]
+    },
+    {
+      "matches": [
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+      ],
+      "js": ["content_scripts/loginByCollegeID.js"]
+    }
+  ],
+
+  "host_permission": ["*://moodle2022.wakayama-u.ac.jp/*"],
+
+  "action": {
+    "default_icon": "images/MoodleModifier-logo-icon128.png",
+    "default_title": "moodle modifier",
+    "default_popup": "popup/advatise_something.html"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/MoodleModifier-logo-icon48.png",
+        "images/MoodleModifier-logo-icon128.png",
+        "images/MoodleModifirer-header.png"
+      ],
+      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+      "extesion_ids": ["lfkadlbamkccpjanljplcfjmkafapnia"]
+    }
+  ]
+}
