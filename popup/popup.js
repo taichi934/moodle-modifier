@@ -1,32 +1,27 @@
 const toggleDarkMode = (isDarkMode) => {
   if (isDarkMode) {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.add('dark');
   } else {
-    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.remove('dark');
   }
-  // document.documentElement.setAttribute('data-theme', storedTheme)
 };
 
 let isDarkMode;
-chrome.storage.local.get(["isDarkMode"], (result) => {
+chrome.storage.local.get(['isDarkMode'], (result) => {
   // storageに値がなければundedinedを返す
-  isDarkMode = result.isDarkMode;
-  if (isDarkMode == undefined) {
+  if (result.isDarkMode === undefined) {
     isDarkMode = false;
   }
-  console.log("isDarkMode => " + isDarkMode);
+  toggleDarkMode(isDarkMode); // for switch in popup/html
 });
 
-// for popup/html
-toggleDarkMode(isDarkMode);
+const colorSwitch = document.getElementsByClassName('color-theme-switch')[0];
 
-const colorSwitch = document.getElementsByClassName("color-theme-switch")[0];
-
-colorSwitch.addEventListener("click", () => {
+colorSwitch.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
   chrome.storage.local.set({ isDarkMode: isDarkMode }, () => {
-    console.log("isDarkMode => " + isDarkMode);
-    toggleDarkMode(isDarkMode);
+    console.log('isDarkMode => ' + isDarkMode);
+    toggleDarkMode(isDarkMode); // for switch in popup/html
   });
 
   // popupからcontent_scriptsにメッセージを送信 +++++++++++++++++++
