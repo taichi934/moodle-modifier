@@ -1,0 +1,24 @@
+:root {
+  --backgroundColor: #0d1117;
+  --color: #c9d1d9;
+  --headerBackgroundColor: #161b22;
+  --borderColor: #30363d;
+  --linkColor: #58a6ff;
+  --radius: 6px;
+}
+body {
+  color: var(--color);
+  background-color: var(--backgroundColor);
+}
+
+.bg-warning,
+.btn-warning {
+  background-color: #e0a800 !important;
+}
+.card-header {
+  background-color: var(--headerBackgroundColor);
+}
+.card,
+.card-body {
+  background-color: var(--backgroundColor);
+}

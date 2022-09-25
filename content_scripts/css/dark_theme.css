@@ -1,0 +1,131 @@
+:root {
+  --backgroundColor: #0d1117;
+  --color: #c9d1d9;
+  --headerBackgroundColor: #161b22;
+  --borderColor: #30363d;
+  --linkColor: #58a6ff;
+  --radius: 6px;
+}
+/* 全体の背景 */
+body {
+  background-color: var(--backgroundColor);
+  color: var(--color);
+}
+
+/* リンクの色を見やすい水色に */
+header#page-header a,
+div#page-content a {
+  color: var(--linkColor) !important;
+}
+
+/* navbar */
+nav.navbar {
+  background-color: var(--headerBackgroundColor) !important;
+  color: var(--color) !important;
+}
+
+nav.navbar button.btn {
+  background-color: var(--backgroundColor) !important;
+  border-color: var(--borderColor) !important;
+  border-radius: var(--radius) !important;
+  color: var(--color) !important;
+}
+
+/* logo */
+#block-region-side-pre .card {
+  border-radius: var(--radius);
+}
+.logo img {
+  /* src; */
+  /* javascript でもともとの画像を削除する必要あり */
+  background: url("moz-extension://ce8603f1-042d-44fd-a479-cb47f47fb3d7/images/wadai-header-dark.png");
+}
+
+/* 左側のコンテンツ */
+#region-main {
+  background-color: var(--headerBackgroundColor);
+  border-color: var(--borderColor);
+  border-radius: var(--radius);
+}
+
+/* .odd はグレーに */
+section .odd {
+  background-color: var(--backgroundColor);
+}
+
+/* コースの検索爛とボタンの色 */
+#shortsearchbox,
+#coursesearchbox,
+form#coursesearch button.btn,
+input.form-control,
+.btn-secondary {
+  background-color: var(--headerBackgroundColor);
+  border-color: var(--borderColor);
+  border-radius: var(--radius);
+  color: var(--color);
+}
+
+/* お知らせコーナー */
+.moodle_news {
+  background-color: var(--headerBackgroundColor) !important;
+}
+#region-main ul.section li {
+  background-color: var(--headerBackgroundColor);
+}
+/* 写真の角を丸く */
+p img {
+  border-radius: var(--radius);
+}
+
+/* navRight */
+.block.card.mb-3 {
+  background-color: var(--headerBackgroundColor);
+  border-color: var(--borderColor);
+  border-radius: var(--radius);
+}
+
+/* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
+#page-header .card {
+  background-color: var(--headerBackgroundColor);
+  border-color: var(--borderColor);
+  border-radius: var(--radius);
+}
+
+.course-content ul li.section.main {
+  border-bottom-color: var(--borderColor);
+}
+
+/* 提出状況の表 */
+table.generaltable,
+.table {
+  color: var(--color);
+  border-color: var(--borderColor);
+}
+.generaltable tbody tr:nth-child(odd) {
+  background-color: var(--backgroundColor) !important;
+}
+.generaltable tbody tr:hover {
+  color: #ffffff;
+}
+.path-mod-assign td.submissionnotgraded,
+.path-mod-assign div.submissionnotgraded {
+  color: var(--color);
+  background-color: var(--backgroundColor);
+}
+
+/* ファイルのアップロード */
+.filemanager .card {
+  background-color: var(--headerBackgroundColor);
+  border-color: var(--borderColor);
+  border-radius: var(--radius);
+  color: var(--color);
+}
+.filemanager .btn-secondary {
+  background-color: var(--backgroundColor) !important;
+  border-color: var(--borderColor) !important;
+}
+
+/* 提出に関する日付 */
+b {
+  color: #ffffff;
+}
