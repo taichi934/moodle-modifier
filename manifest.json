@@ -28,6 +28,7 @@
   ],
 
   "host_permission": ["*://moodle2022.wakayama-u.ac.jp/*"],
+  "permissions": ["storage", "scripting"],
 
   "action": {
     "default_icon": "images/MoodleModifier-logo-icon128.png",

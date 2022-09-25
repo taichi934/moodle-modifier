@@ -1,0 +1,11 @@
+:root {
+    --backgroundColor: #fff;
+}
+
+:root.dark {
+    --backgroundColor: #000;
+}
+
+.color-theme-switch {
+    background-color: var(--backgroundColor);
+}
