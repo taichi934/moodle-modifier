@@ -1,1 +1,4 @@
 *.zip
+
+.eslintrc.json
+.prettierrc
