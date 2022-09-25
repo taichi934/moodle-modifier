@@ -1,4 +1,13 @@
 :root {
+  --backgroundColor: #fff;
+  --color: #fff;
+  /* --headerBackgroundColor:; */
+  --borderColor: rgba(0, 0, 0, 0.125);
+  --linkColor: ##0f6fc5;
+  --radius: 6px;
+}
+
+:root.dark {
   --backgroundColor: #0d1117;
   --color: #c9d1d9;
   --headerBackgroundColor: #161b22;
@@ -24,7 +33,7 @@ nav.navbar {
   color: var(--color) !important;
 }
 
-nav.navbar button.btn {
+.dark nav.navbar button.btn {
   background-color: var(--backgroundColor) !important;
   border-color: var(--borderColor) !important;
   border-radius: var(--radius) !important;
@@ -35,11 +44,11 @@ nav.navbar button.btn {
 #block-region-side-pre .card {
   border-radius: var(--radius);
 }
-.logo img {
-  /* src; */
-  /* javascript でもともとの画像を削除する必要あり */
-  background: url("moz-extension://ce8603f1-042d-44fd-a479-cb47f47fb3d7/images/wadai-header-dark.png");
-}
+/* .logo img { */
+/* src; */
+/* javascript でもともとの画像を削除する必要あり */
+/* background: url("moz-extension://ce8603f1-042d-44fd-a479-cb47f47fb3d7/images/wadai-header-dark.png"); */
+/* }  */
 
 /* 左側のコンテンツ */
 #region-main {

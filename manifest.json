@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "moodle modifier",
-  "description": "Login automatically and change the layout of Moodle",
+  "description": "Login automatically, change the layout of Moodle, and support dark mode",
   "version": "1.0.0",
 
   "icons": {
@@ -16,6 +16,17 @@
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
       ],
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+      "css": ["content_scripts/css/dark_theme.css"],
+      "js": ["content_scripts/checkDarkMode.js"],
+      "run_at": "document_start"
+    },
+    {
+      "exclude_matches": [
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+      ],
+      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+      "run_at": "document_end",
       "js": ["content_scripts/re-layout.js"]
     },
     {
@@ -27,8 +38,8 @@
     }
   ],
 
+  "permissions": ["storage"],
   "host_permission": ["*://moodle2022.wakayama-u.ac.jp/*"],
-  "permissions": ["storage", "scripting"],
 
   "action": {
     "default_icon": "images/MoodleModifier-logo-icon128.png",
