@@ -1,9 +1,9 @@
 :root {
   --backgroundColor: #fff;
-  --color: #fff;
+  --color: #212529;
   /* --headerBackgroundColor:; */
   --borderColor: rgba(0, 0, 0, 0.125);
-  --linkColor: ##0f6fc5;
+  --linkColor: #0f6fc5;
   --radius: 6px;
 }
 
@@ -17,8 +17,8 @@
 }
 /* 全体の背景 */
 body {
-  background-color: var(--backgroundColor);
-  color: var(--color);
+  background-color: var(--backgroundColor) !important;
+  color: var(--color) !important;
 }
 
 /* リンクの色を見やすい水色に */
@@ -28,7 +28,7 @@ div#page-content a {
 }
 
 /* navbar */
-nav.navbar {
+.dark div#page-wrapper nav.navbar {
   background-color: var(--headerBackgroundColor) !important;
   color: var(--color) !important;
 }
@@ -43,17 +43,20 @@ nav.navbar {
 /* logo */
 #block-region-side-pre .card {
   border-radius: var(--radius);
+  background-color: var(--backgroundColor);
 }
-/* .logo img { */
-/* src; */
-/* javascript でもともとの画像を削除する必要あり */
-/* background: url("moz-extension://ce8603f1-042d-44fd-a479-cb47f47fb3d7/images/wadai-header-dark.png"); */
-/* }  */
+.dark .logo img {
+  filter: opacity(100%);
+
+  /* src; */
+  /* javascript でもともとの画像を削除する必要あり */
+  /* background: url("moz-extension://ce8603f1-042d-44fd-a479-cb47f47fb3d7/images/wadai-header-dark.png"); */
+}
 
 /* 左側のコンテンツ */
 #region-main {
-  background-color: var(--headerBackgroundColor);
-  border-color: var(--borderColor);
+  background-color: var(--headerBackgroundColor) !important;
+  border-color: var(--borderColor) !important;
   border-radius: var(--radius);
 }
 
@@ -65,9 +68,9 @@ section .odd {
 /* コースの検索爛とボタンの色 */
 #shortsearchbox,
 #coursesearchbox,
-form#coursesearch button.btn,
-input.form-control,
-.btn-secondary {
+.dark form#coursesearch button.btn,
+.dark input.form-control,
+.dark .btn-secondary {
   background-color: var(--headerBackgroundColor);
   border-color: var(--borderColor);
   border-radius: var(--radius);
@@ -75,10 +78,10 @@ input.form-control,
 }
 
 /* お知らせコーナー */
-.moodle_news {
+.dark .sitetopic .moodle_news {
   background-color: var(--headerBackgroundColor) !important;
 }
-#region-main ul.section li {
+.dark #region-main ul.section li {
   background-color: var(--headerBackgroundColor);
 }
 /* 写真の角を丸く */
@@ -113,13 +116,13 @@ table.generaltable,
 .generaltable tbody tr:nth-child(odd) {
   background-color: var(--backgroundColor) !important;
 }
-.generaltable tbody tr:hover {
-  color: #ffffff;
+.dark .generaltable tbody tr:hover {
+  color: #fff !important;
 }
 .path-mod-assign td.submissionnotgraded,
 .path-mod-assign div.submissionnotgraded {
-  color: var(--color);
-  background-color: var(--backgroundColor);
+  color: var(--color) !important;
+  background-color: var(--backgroundColor) !important;
 }
 
 /* ファイルのアップロード */
@@ -135,6 +138,6 @@ table.generaltable,
 }
 
 /* 提出に関する日付 */
-b {
-  color: #ffffff;
+.dark b {
+  color: #fff;
 }
