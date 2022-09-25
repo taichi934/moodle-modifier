@@ -11,6 +11,8 @@ chrome.storage.local.get(['isDarkMode'], (result) => {
   // storageに値がなければundedinedを返す
   if (result.isDarkMode === undefined) {
     isDarkMode = false;
+  } else {
+    isDarkMode = result.isDarkMode;
   }
   toggleDarkMode(isDarkMode); // for switch in popup/html
 });
