@@ -1,9 +1,19 @@
+const changeSwitchText = (isDarkMode) => {
+  const switchBtn = document.querySelector('.color-theme-switch');
+  if (isDarkMode) {
+    switchBtn.textContent = 'ダークテーマ';
+  } else {
+    switchBtn.textContent = 'ライトテーマ';
+  }
+};
+
 const toggleDarkMode = (isDarkMode) => {
   if (isDarkMode) {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');
   }
+  changeSwitchText(isDarkMode);
 };
 
 let isDarkMode;
