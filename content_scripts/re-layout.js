@@ -1,6 +1,6 @@
 // 無名関数を定義して呼び出すのが定例っぽい
 (() => {
-  window.addEventListener('load', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     // 自動ログイン
     const loginLink = document.querySelector('.login');
     // ログインのリンクがある場合

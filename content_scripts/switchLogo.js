@@ -1,5 +1,5 @@
 (() => {
-  window.addEventListener('load', () => {
+  window.addEventListener('DOMContentLoaded', () => {
     // Change wadai logo image on top of right nav
     const changeLogo = (isDarkMode) => {
       const img = document.querySelector('.logo img');
