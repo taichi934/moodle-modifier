@@ -16,9 +16,9 @@
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
       ],
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+      "run_at": "document_start",
       "css": ["content_scripts/css/dark_theme.css"],
-      "js": ["content_scripts/checkDarkMode.js"],
-      "run_at": "document_start"
+      "js": ["content_scripts/checkDarkMode.js"]
     },
     {
       "exclude_matches": [
@@ -27,19 +27,28 @@
       ],
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
       "run_at": "document_end",
-      "js": ["content_scripts/re-layout.js"]
+      "js": ["content_scripts/re-layout.js", "content_scripts/switchLogo.js"]
     },
     {
       "matches": [
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
       ],
+      "run_at": "document_start",
+      "css": ["content_scripts/css/dark_theme_login.css"]
+    },
+    {
+      "matches": [
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+      ],
+      "run_at": "document_start",
       "js": ["content_scripts/loginByCollegeID.js"]
     }
   ],
 
   "permissions": ["storage"],
-  "host_permission": ["*://moodle2022.wakayama-u.ac.jp/*"],
+  "host_permissions": ["*://moodle2022.wakayama-u.ac.jp/*"],
 
   "action": {
     "default_icon": "images/MoodleModifier-logo-icon128.png",
@@ -51,7 +60,7 @@
     {
       "resources": ["images/*"],
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
-      "extesion_ids": ["lfkadlbamkccpjanljplcfjmkafapnia"]
+      "extesion_ids": ["olmnocfkelpngfbjigmofnpehmcdcjke"]
     }
   ]
 }
