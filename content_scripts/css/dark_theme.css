@@ -19,6 +19,7 @@
 body {
   background-color: var(--backgroundColor) !important;
   color: var(--color) !important;
+  transition: 0.3s ease-in-out;
 }
 
 /* リンクの色を見やすい水色に */
@@ -31,6 +32,9 @@ div#page-content a {
 .dark div#page-wrapper nav.navbar {
   background-color: var(--headerBackgroundColor) !important;
   color: var(--color) !important;
+  border-bottom-color: var(--borderColor);
+  box-shadow: 0 1rem 2rem hsl(0 0% 0% / 20%);
+  transition: 0.3s ease;
 }
 
 .dark nav.navbar button.btn {
@@ -40,35 +44,26 @@ div#page-content a {
   color: var(--color) !important;
 }
 
-/* logo */
-#block-region-side-pre .card {
-  border-radius: var(--radius);
-  background-color: var(--backgroundColor);
-}
-.dark .logo img {
-  filter: opacity(100%);
-
-  /* src; */
-  /* javascript でもともとの画像を削除する必要あり */
-  /* background: url("moz-extension://ce8603f1-042d-44fd-a479-cb47f47fb3d7/images/wadai-header-dark.png"); */
-}
-
 /* 左側のコンテンツ */
 #region-main {
-  background-color: var(--headerBackgroundColor) !important;
+  /* background-color: var(--headerBackgroundColor) !important; */
+  background-color: var(--backgroundColor) !important;
   border-color: var(--borderColor) !important;
   border-radius: var(--radius);
+  transition: 0.5s ease;
 }
 
 /* .odd はグレーに */
 section .odd {
   background-color: var(--backgroundColor);
+  background-color: var(--headerBackgroundColor);
+  transition: 0.4s ease;
 }
 
 /* コースの検索爛とボタンの色 */
 #shortsearchbox,
 #coursesearchbox,
-.dark form#coursesearch button.btn,
+form#coursesearch button.btn,
 .dark input.form-control,
 .dark .btn-secondary {
   background-color: var(--headerBackgroundColor);
@@ -88,12 +83,19 @@ section .odd {
 p img {
   border-radius: var(--radius);
 }
+.dark p img {
+  border-radius: var(--radius);
+  /* ダークテーマに適した色味に変更 */
+  filter: brightness(0.8) contrast(1.2);
+}
 
-/* navRight */
-.block.card.mb-3 {
-  background-color: var(--headerBackgroundColor);
+/* navRight */ /* logo */
+#block-region-side-pre .card {
+  background-color: var(--backgroundColor);
+  /* background-color: var(--headerBackgroundColor); */
   border-color: var(--borderColor);
   border-radius: var(--radius);
+  transition: 0.3s ease;
 }
 
 /* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -103,7 +105,7 @@ p img {
   border-radius: var(--radius);
 }
 
-.course-content ul li.section.main {
+.dark .course-content ul li.section.main {
   border-bottom-color: var(--borderColor);
 }
 
