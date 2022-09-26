@@ -20,8 +20,8 @@
       "css": ["content_scripts/css/dark_theme.css"],
       "js": [
         "content_scripts/checkDarkMode.js",
-        "content_scripts/re-layout.js",
-        "content_scripts/switchLogo.js"
+        "content_scripts/switchLogo.js",
+        "content_scripts/re-layout.js"
       ]
     },
     {

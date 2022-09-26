@@ -19,7 +19,6 @@
 body {
   background-color: var(--backgroundColor) !important;
   color: var(--color) !important;
-  transition: 0.3s ease-in-out;
 }
 
 /* リンクの色を見やすい水色に */
@@ -33,15 +32,15 @@ div#page-content a {
   background-color: var(--headerBackgroundColor) !important;
   color: var(--color) !important;
   border-bottom-color: var(--borderColor);
-  box-shadow: 0 1rem 2rem hsl(0 0% 0% / 20%);
-  transition: 0.3s ease;
+  box-shadow: 0 5px 2px rgb(17, 17, 17);
 }
 
 .dark nav.navbar button.btn {
-  background-color: var(--backgroundColor) !important;
+  background-color: var(--headerBackgroundColor) !important;
   border-color: var(--borderColor) !important;
   border-radius: var(--radius) !important;
   color: var(--color) !important;
+  transition: 0s;
 }
 
 /* 左側のコンテンツ */
@@ -57,7 +56,7 @@ div#page-content a {
 section .odd {
   background-color: var(--backgroundColor);
   background-color: var(--headerBackgroundColor);
-  transition: 0.4s ease;
+  transition: 0.4s;
 }
 
 /* コースの検索爛とボタンの色 */
@@ -97,7 +96,7 @@ p img {
   /* background-color: var(--headerBackgroundColor); */
   border-color: var(--borderColor);
   border-radius: var(--radius);
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 /* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -112,7 +111,8 @@ p img {
 }
 
 .dark .course-content ul li.section.main {
-  border-bottom-color: var(--borderColor);
+  /* border-bottom-color: var(--borderColor); */
+  border-color: var(--borderColor);
 }
 
 /* 提出状況の表 */
