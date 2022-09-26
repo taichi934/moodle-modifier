@@ -76,8 +76,10 @@ form#coursesearch button.btn,
 .dark .sitetopic .moodle_news {
   background-color: var(--headerBackgroundColor) !important;
 }
+/* 履修登録について */
 .dark #region-main ul.section li {
   background-color: var(--headerBackgroundColor);
+  border-radius: var(--radius);
 }
 /* 写真の角を丸く */
 p img {
@@ -102,6 +104,10 @@ p img {
 #page-header .card {
   background-color: var(--headerBackgroundColor);
   border-color: var(--borderColor);
+  border-radius: var(--radius);
+}
+.dark #region-main div.content ul.section li {
+  background-color: var(--backgroundColor);
   border-radius: var(--radius);
 }
 
