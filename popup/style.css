@@ -1,11 +1,19 @@
 :root {
-    --backgroundColor: #fff;
+  --backgroundColor: #fff;
+  --color: #000;
 }
 
 :root.dark {
-    --backgroundColor: #000;
+  --backgroundColor: #000;
+  --color: #fff;
+}
+
+div {
+  font-weight: bold;
 }
 
 .color-theme-switch {
-    background-color: var(--backgroundColor);
+  background-color: var(--backgroundColor);
+  color: var(--color);
+  border-radius: 6px;
 }
