@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "moodle modifier",
   "description": "Login automatically, change the layout of Moodle, and support dark mode",
-  "version": "1.0.0",
+  "version": "1.3.0",
 
   "icons": {
     "48": "images/MoodleModifier-logo-icon48.png",
@@ -18,7 +18,7 @@
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
       "run_at": "document_start",
       "css": ["content_scripts/css/dark_theme.css"],
-      "js": ["content_scripts/checkDarkMode.js"]
+      "js": ["content_scripts/checkDarkMode.js", "content_scripts/re-layout.js"]
     },
     {
       "exclude_matches": [
@@ -27,7 +27,7 @@
       ],
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
       "run_at": "document_end",
-      "js": ["content_scripts/re-layout.js", "content_scripts/switchLogo.js"]
+      "js": ["content_scripts/switchLogo.js"]
     },
     {
       "matches": [
@@ -35,15 +35,11 @@
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
       ],
       "run_at": "document_start",
-      "css": ["content_scripts/css/dark_theme_login.css"]
-    },
-    {
-      "matches": [
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-      ],
-      "run_at": "document_start",
-      "js": ["content_scripts/loginByCollegeID.js"]
+      "css": ["content_scripts/css/dark_theme_login.css"],
+      "js": [
+        "content_scripts/checkDarkMode.js",
+        "content_scripts/loginByCollegeID.js"
+      ]
     }
   ],
 
