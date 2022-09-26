@@ -15,6 +15,15 @@
   --linkColor: #58a6ff;
   --radius: 6px;
 }
+
+/* re-laout.jsが動作するまでの瞬間でちらつくのを防止するため */
+mr-auto .logo img {
+  display: none !important;
+}
+p a > img {
+  display: none !important;
+}
+
 /* 全体の背景 */
 body {
   background-color: var(--backgroundColor) !important;

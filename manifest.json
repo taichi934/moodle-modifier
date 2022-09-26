@@ -25,6 +25,15 @@
       ]
     },
     {
+      "exclude_matches": [
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+      ],
+      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+      "run_at": "document_end",
+      "css": ["content_scripts/css/show_logo_image_again.css"]
+    },
+    {
       "matches": [
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
         "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
