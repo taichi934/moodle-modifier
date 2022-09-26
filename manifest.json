@@ -18,16 +18,11 @@
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
       "run_at": "document_start",
       "css": ["content_scripts/css/dark_theme.css"],
-      "js": ["content_scripts/checkDarkMode.js", "content_scripts/re-layout.js"]
-    },
-    {
-      "exclude_matches": [
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-      ],
-      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
-      "run_at": "document_end",
-      "js": ["content_scripts/switchLogo.js"]
+      "js": [
+        "content_scripts/checkDarkMode.js",
+        "content_scripts/switchLogo.js",
+        "content_scripts/re-layout.js"
+      ]
     },
     {
       "matches": [
