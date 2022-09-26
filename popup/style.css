@@ -1,22 +1,33 @@
 :root {
   --backgroundColor: #fff;
   --color: #000;
+  --mode-font-color: rgba(143, 132, 132, 0.5);
 }
 
 :root.dark {
-  --backgroundColor: #000;
-  --color: #fff;
+  --backgroundColor: #161b22;
+  --color: #c9d1d9;
+  --mode-font-color: #fff;
+}
+
+.main-container {
+  padding: 0rem 2rem;
+}
+
+body {
+  background-color: var(--backgroundColor);
+  color: var(--color);
+  transition: 0.6s;
 }
 
 div {
   font-weight: bold;
 }
 
-/* .switch {
-  background-color: var(--backgroundColor);
-  color: var(--color);
-  border-radius: 6px;
-} */
+p {
+  font-size: 100%;
+}
+
 input {
   display: none;
 }
@@ -24,12 +35,16 @@ input {
   width: 200px;
   height: 50px;
   position: relative;
+  margin-top: 5px;
   margin-bottom: 10px;
+  float: right;
 }
-span h2 {
+span h2#mode-text {
   float: left;
   margin-top: 0px;
   margin-right: 5px;
+  color: var(--mode-font-color);
+  transition: 0.5s ease-in-out;
 }
 label {
   width: 60px;

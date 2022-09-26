@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html class="dark">
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -8,21 +8,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <img
-      src="../images/MoodleModifier-header.png"
-      alt="moodle modifier header image"
-    />
-    <h1>大学生の諸君！</h1>
-    <h2>この拡張機能を使ってくれてありがとうございます！</h2>
-    <p>
-      便利だと感じていただければ、周りの子にも教えてあげてくれると嬉しいです！
-    </p>
-    <p>もしバグを見つけたり、なにか要望があれば気軽に教えてください！</p>
-    <p>連絡先： k1takaz3.pupupu@gmail.com</p>
-    <div class="color-theme">
-      <span><h2>ダークモード🌓</h2></span>
-      <input id="switch" type="checkbox" class="switch" />
-      <label for="switch"></label>
+    <div class="whole-container">
+      <div class="image-container">
+        <img
+          src="../images/MoodleModifier-header.png"
+          alt="moodle modifier header image"
+        />
+      </div>
+      <div class="main-container">
+        <div class="text-container">
+          <h1>大学生の諸君！</h1>
+          <h2>この拡張機能を使ってくれてありがとうございます！</h2>
+          <p>
+            便利だと感じていただければ、周りの子にも教えてあげてくれると嬉しいです！
+          </p>
+          <p>
+            もしバグを見つけたり、なにか要望があればレビューにて気軽にコメントください！
+          </p>
+        </div>
+        <div class="switch-conrtainer">
+          <div class="color-theme">
+            <span><h2 id="mode-text">ダークモード🌓</h2></span>
+            <input id="switch" type="checkbox" class="switch" />
+            <label for="switch"></label>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="popup.js"></script>
   </body>
