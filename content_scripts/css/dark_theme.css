@@ -143,3 +143,18 @@ table.generaltable,
 .dark b {
   color: #fff;
 }
+
+/* ダッシュボードのページ */
+.dark #region-main section.card {
+  background-color: var(--backgroundColor) !important;
+  border-color: var(--borderColor);
+  border-radius: var(--radius);
+}
+.dark #region-main section.card .card {
+  background-color: var(--headerBackgroundColor) !important;
+  border-color: var(--borderColor);
+}
+.dark #region-main section.card .card .card-footer {
+  background-color: var(--headerBackgroundColor) !important;
+  border-color: var(--borderColor);
+}
