@@ -19,8 +19,7 @@
   // popupでカラーテーマを変更したとき
   chrome.storage.onChanged.addListener((changes, namespace) => {
     isDarkMode = changes.isDarkMode;
-    console.log('updated isDarkMode => ' + isDarkMode);
-    console.log(isDarkMode); // isDarkMode <= {newValue: true, oldValue: false}
+    // isDarkMode <= {newValue: true, oldValue: false}
     toggleDarkMode(isDarkMode.newValue);
   });
 })();
