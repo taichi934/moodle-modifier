@@ -1,0 +1,38 @@
+iframe {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-table {
+  padding: 10px;
+}
+
+.calendar-table table.calendarmonth {
+  box-sizing: border-box;
+  /* position: relative; */
+  /* width: 100px;s */
+  /* height: 300px !important; */
+  /* padding: 10px; */
+  table-layout: fixed;
+  word-break: break-all;
+  word-wrap: break-all;
+  /* white-space: nowrap; テキストの折り返しをしない */
+}
+
+.calendarmonth ul {
+  list-style-type: none;
+}
+
+.calendarmonth ul li .calendar-circle.calendar_event_course {
+  background-color: #ffd3bd;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #d34600;
+  border-radius: 6px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.calendarmonth ul li a span.eventname {
+  display: none;
+}
