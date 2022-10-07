@@ -63,8 +63,7 @@
   "web_accessible_resources": [
     {
       "resources": ["images/*"],
-      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
-      "extesion_ids": ["olmnocfkelpngfbjigmofnpehmcdcjke"]
+      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"]
     }
   ]
 }
