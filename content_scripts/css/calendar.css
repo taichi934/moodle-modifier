@@ -1,36 +1,58 @@
-iframe {
-  max-width: 100%;
-  box-sizing: border-box;
+:root {
+  --backgroundColor: #fff;
+  --color: #212529;
+  --headerBackgroundColor: #fff;
+  --borderColor: rgba(0, 0, 0, 0.125);
 }
 
-.calendar-table {
+:root.dark {
+  --backgroundColor: #0d1117;
+  --color: #c9d1d9;
+  --headerBackgroundColor: #161b22;
+  --borderColor: #30363d;
+}
+
+div.calendar-table {
   padding: 10px;
 }
 
+div.calendarwrapper .controls a {
+  display: none !important;
+}
+
 .calendar-table table.calendarmonth {
-  box-sizing: border-box;
-  /* position: relative; */
-  /* width: 100px;s */
-  /* height: 300px !important; */
-  /* padding: 10px; */
   table-layout: fixed;
-  word-break: break-all;
-  word-wrap: break-all;
-  /* white-space: nowrap; テキストの折り返しをしない */
+  /* word-break: break-all;
+  word-wrap: break-all; */
+  width: 100%;
+  background-color: var(--headerBackgroundColor);
+  border: 1px solid var(--borderColor);
+}
+
+table.calendarmonth > thead > tr th {
+  text-align: center;
+  border: 1px solid var(--borderColor);
+}
+table.calendarmonth > tbody > tr td {
+  vertical-align: top;
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--borderColor);
+}
+div#page-content table.calendarmonth a.aalink.day {
+  color: var(--color) !important;
 }
 
 .calendarmonth ul {
+  box-sizing: border-box;
   list-style-type: none;
+  padding-left: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .calendarmonth ul li .calendar-circle.calendar_event_course {
-  background-color: #ffd3bd;
-  width: 12px;
-  height: 12px;
-  border: 2px solid #d34600;
-  border-radius: 6px;
-  vertical-align: middle;
-  display: inline-block;
+  /* background-color: #ffd3bd; width: 12px; height: 12px; border: 2px solid #d34600; border-radius: 6px; vertical-align: middle; display: inline-block; */
+  display: none;
 }
 
 .calendarmonth ul li a span.eventname {

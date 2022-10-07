@@ -3,7 +3,8 @@
     const calendarPage = document.createElement("iframe");
     calendarPage.src = "./calendar/view.php?view=month";
     // calendarPage.style.display = "none";
-    document.getElementById("page-wrapper").appendChild(calendarPage);
+    // document.getElementById("page-wrapper").appendChild(calendarPage);
+    document.body.appendChild(calendarPage);
 
     // console.log(calendarPage.contentDocument.document);
 
@@ -15,7 +16,7 @@
 
       const tableDiv = document.createElement("div");
       const calendar = calendarPage.contentWindow.document.querySelector(
-        "div.calendarwrapper table"
+        "div.calendarwrapper"
       );
       tableDiv.classList.add("calendar-table", "block", "card", "mb-3");
       tableDiv.appendChild(calendar);
@@ -26,7 +27,8 @@
       let links = navRight.children[2];
       navRight.insertBefore(tableDiv, links);
 
-      document.getElementById("page-wrapper").removeChild(calendarPage);
+      // document.getElementById("page-wrapper").removeChild(calendarPage);
+      document.body.removeChild(calendarPage);
     });
   };
 
