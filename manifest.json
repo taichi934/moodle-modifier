@@ -17,11 +17,15 @@
       ],
       "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
       "run_at": "document_start",
-      "css": ["content_scripts/css/dark_theme.css"],
+      "css": [
+        "content_scripts/css/dark_theme.css",
+        "content_scripts/css/calendar.css"
+      ],
       "js": [
         "content_scripts/checkDarkMode.js",
         "content_scripts/switchLogo.js",
-        "content_scripts/re-layout.js"
+        "content_scripts/re-layout.js",
+        "content_scripts/addCalendar.js"
       ]
     },
     {
