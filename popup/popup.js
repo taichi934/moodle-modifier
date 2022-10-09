@@ -13,7 +13,7 @@ const toggleDarkMode = (isDarkMode, colorSwitch, modeText) => {
 let isDarkMode;
 const modeText = document.getElementById('mode-text');
 
-chrome.storage.local.get(['isDarkMode'], (result) => {
+chrome.storage.sync.get(['isDarkMode'], (result) => {
   // storageに値がなければundedinedを返す
   if (result.isDarkMode === undefined) {
     isDarkMode = false;
@@ -28,7 +28,7 @@ const colorSwitch = document.querySelector(`input[type = 'checkbox']`);
 
 colorSwitch.addEventListener('change', () => {
   isDarkMode = !isDarkMode;
-  chrome.storage.local.set({ isDarkMode: isDarkMode }, () => {
+  chrome.storage.sync.set({ isDarkMode: isDarkMode }, () => {
     toggleDarkMode(isDarkMode, colorSwitch, modeText); // for switch in popup/html
   });
 });
