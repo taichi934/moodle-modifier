@@ -11,7 +11,7 @@
     };
 
     let isDarkMode;
-    chrome.storage.local.get(['isDarkMode'], (items) => {
+    chrome.storage.sync.get(['isDarkMode'], (items) => {
       isDarkMode = items.isDarkMode;
       if (isDarkMode === undefined) {
         isDarkMode = false;
@@ -20,7 +20,7 @@
     });
 
     // popupでカラーテーマを変更したとき
-    chrome.storage.onChanged.addListener((changes, namespace) => {
+    chrome.storage.onChanged.addListener((changes) => {
       isDarkMode = changes.isDarkMode;
       changeLogo(isDarkMode.newValue);
     });
