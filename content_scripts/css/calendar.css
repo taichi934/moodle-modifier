@@ -58,3 +58,7 @@ div#page-content table.calendarmonth a.aalink.day {
 .calendarmonth ul li a span.eventname {
   display: none;
 }
+
+.todaySpan {
+  color: #f08000;
+}

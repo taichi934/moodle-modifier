@@ -15,14 +15,34 @@
       const calendar = calendarPage.contentDocument.querySelector(
         "div.calendarwrapper"
       );
-      calendarDiv.appendChild(calendar); // カレンダーをdivで包む
+      calendarDiv.appendChild(calendar); // カレンダーをdiv(calendarDiv)で包む
 
       const navRight = document.getElementById("block-region-side-pre");
       let links = navRight.children[2];
       navRight.insertBefore(calendarDiv, links);
 
+      markToday();
+
       document.body.removeChild(calendarPage);
     });
+  };
+
+  const markToday = () => {
+    const todayTimestamp = getUnixTimestamp();
+    const todaySpan = document.querySelector(
+      `table td[data-day-timestamp="${todayTimestamp}"] span:last-child`
+    );
+    todaySpan.classList.add("todaySpan");
+  };
+
+  const getUnixTimestamp = () => {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth(); // 月だけ0ベース
+    const date = d.getDate();
+    const Unixtime = new Date(year, month, date);
+    const timestamp = Unixtime.getTime() / 1000; // 単位がmsだから1000で割る
+    return timestamp;
   };
 
   window.addEventListener("DOMContentLoaded", () => {
