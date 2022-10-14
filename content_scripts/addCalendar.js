@@ -21,13 +21,18 @@
       let links = navRight.children[2];
       navRight.insertBefore(calendarDiv, links);
 
+      markToday();
+
       document.body.removeChild(calendarPage);
     });
   };
 
-  const markToday = (table) => {
+  const markToday = () => {
     const todayTimestamp = getUnixTimestamp();
-    let table = table;
+    const todaySpan = document.querySelector(
+      `table td[data-day-timestamp="${todayTimestamp}"] span:last-child`
+    );
+    todaySpan.classList.add("todaySpan");
   };
 
   const getUnixTimestamp = () => {
@@ -37,10 +42,6 @@
     const date = d.getDate();
     const Unixtime = new Date(year, month, date);
     const timestamp = Unixtime.getTime() / 1000; // 単位がmsだから1000で割る
-    console.log("year: " + year);
-    console.log("month: " + month);
-    console.log("date: " + date);
-    console.log("timestamp: " + timestamp);
     return timestamp;
   };
 
