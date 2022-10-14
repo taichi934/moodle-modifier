@@ -15,7 +15,7 @@
       const calendar = calendarPage.contentDocument.querySelector(
         "div.calendarwrapper"
       );
-      calendarDiv.appendChild(calendar); // カレンダーをdivで包む
+      calendarDiv.appendChild(calendar); // カレンダーをdiv(calendarDiv)で包む
 
       const navRight = document.getElementById("block-region-side-pre");
       let links = navRight.children[2];
@@ -23,6 +23,25 @@
 
       document.body.removeChild(calendarPage);
     });
+  };
+
+  const markToday = (table) => {
+    const todayTimestamp = getUnixTimestamp();
+    let table = table;
+  };
+
+  const getUnixTimestamp = () => {
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = d.getMonth(); // 月だけ0ベース
+    const date = d.getDate();
+    const Unixtime = new Date(year, month, date);
+    const timestamp = Unixtime.getTime() / 1000; // 単位がmsだから1000で割る
+    console.log("year: " + year);
+    console.log("month: " + month);
+    console.log("date: " + date);
+    console.log("timestamp: " + timestamp);
+    return timestamp;
   };
 
   window.addEventListener("DOMContentLoaded", () => {
