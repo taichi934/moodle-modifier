@@ -93,7 +93,8 @@ form#coursesearch button.btn,
 p img {
   border-radius: var(--radius);
 }
-.dark p img {
+.dark p img,
+.dark .logo > img {
   border-radius: var(--radius);
   /* ダークテーマに適した色味に変更 */
   filter: brightness(0.8) contrast(1.2);
