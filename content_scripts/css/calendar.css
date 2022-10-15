@@ -60,5 +60,9 @@ div#page-content table.calendarmonth a.aalink.day {
 }
 
 .todaySpan {
-  color: #f08000;
+  color: var(--backgroundColor);
+  background-color: var(--linkColor);
+  border-radius: 15px;
+  margin-left: 2px;
+  padding: 1px 3px;
 }
