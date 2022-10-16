@@ -1,12 +1,11 @@
 {
     "manifest_version": 2,
     "name": "wadai moodle modifier",
-    "description": "Login automatically, change the layout of Moodle, and support dark mode",
-    "version": "1.4.2",
+    "description": "Login automatically and change the layout of Moodle",
+    "version": "1.1.0",
 
     "icons": {
-        "48": "images/MoodleModifier-logo-icon48.png",
-        "128": "images/MoodleModifier-logo-icon128.png"
+        "48": "images/wadai-logo.png"
     },
 
     "content_scripts": [
@@ -17,16 +16,7 @@
             ],
             "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
             "run_at": "document_start",
-            "css": [
-                "content_scripts/css/dark_theme.css",
-                "content_scripts/css/calendar.css"
-            ],
-            "js": [
-                "content_scripts/checkDarkMode.js",
-                "content_scripts/switchLogo.js",
-                "content_scripts/re-layout.js",
-                "content_scripts/addCalendar.js"
-            ]
+            "css": ["css/dark_theme.css"]
         },
         {
             "exclude_matches": [
@@ -35,7 +25,7 @@
             ],
             "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
             "run_at": "document_end",
-            "css": ["content_scripts/css/show_logo_image_again.css"]
+            "js": ["content_scripts/re-layout.js"]
         },
         {
             "matches": [
@@ -43,18 +33,22 @@
                 "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
             ],
             "run_at": "document_start",
-            "css": ["content_scripts/css/dark_theme_login.css"],
-            "js": [
-                "content_scripts/checkDarkMode.js",
-                "content_scripts/loginByCollegeID.js"
-            ]
+            "css": ["css/dark_theme_login.css"]
+        },
+        {
+            "matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+            ],
+            "run_at": "document_end",
+            "js": ["content_scripts/loginByCollegeID.js"]
         }
     ],
 
-    "permissions": ["storage", "*://moodle2022.wakayama-u.ac.jp/*"],
+    "permissions": ["*://moodle2022.wakayama-u.ac.jp/*"],
 
     "browser_action": {
-        "default_icon": "images/MoodleModifier-logo-icon128.png",
+        "default_icon": "images/wadai-logo.png",
         "default_title": "wadai moodle modifier",
         "default_popup": "popup/advatise_something.html"
     },
