@@ -14,11 +14,19 @@ function addDisplayOffButton(courses) {
         btn.setAttribute('type', 'button');
         btn.textContent = '非表示';
         btn.addEventListener('click', () => {
+            const myCourseList = document.getElementById(
+                'frontpage-course-list'
+            );
             const disappearedCourseList = document.getElementById(
                 'display-off-course-list'
             );
-            moveCourseTo(c, disappearedCourseList);
-            btn.textContent = '表示';
+            if (btn.textContent === '非表示') {
+                moveCourseTo(c, disappearedCourseList);
+                btn.textContent = '表示';
+            } else {
+                moveCourseTo(c, myCourseList);
+                btn.textContent = '非表示';
+            }
             // マイコースのoddとevenのクラスを更新処理
         });
 
@@ -40,7 +48,7 @@ function makeDisapperedCourseList() {
 
 function moveCourseTo(course, des) {
     course.style.display = 'none';
-    des.children[2].appendChild(course);
+    des.children[2].insertBefore(course, des.children[2].lastChild);
 }
 
 // マイコースと非表示にしたコースリストの切り替え
