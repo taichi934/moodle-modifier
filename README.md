@@ -13,6 +13,7 @@ moodle modifier offers you a few features to make moodle a little better for dai
 - Add calendar that shows reports' deadlines in top page.
 
 # What comes next ?
+I'm in the mids of implementing Edit Mode to remove no-need courses from My Course.
 
-Any idea?
+Any other idea?
 Please tell me some features you want by issues
