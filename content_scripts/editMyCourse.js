@@ -95,6 +95,7 @@ function moveCourseTo(course, des) {
     }
 }
 
+// 非表示にしたりしたときにコースの背景連続しないように
 function remapOddEven() {
     const courses = document.getElementsByClassName('coursebox');
 
