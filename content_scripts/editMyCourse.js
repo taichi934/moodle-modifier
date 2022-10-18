@@ -1,3 +1,15 @@
+(() => {
+    // await deleteRemovedCoursesInStorage();
+
+    makeDisapperedCourseList();
+    removeDisplayOffCourses();
+    addDisplayOnOffButton();
+    addCourseListToggleButton();
+})();
+
+let removedCourses = [];
+
+// デバッグ時にstorageを全消去する用
 // async function deleteRemovedCoursesInStorage() {
 //     await chrome.storage.sync.clear();
 // }
@@ -14,15 +26,13 @@ function makeDisapperedCourseList() {
     myCourse.insertAdjacentElement('afterend', disappearedCourseList);
 }
 
-function removeDisplayOffCourses(removedCourses) {
-    // let removedCourses = [];
-
+function removeDisplayOffCourses() {
     chrome.storage.sync.get(['removedCourses'], (items) => {
-        removedCourses = items.removedCourses; // array
+        removedCourses = items.removedCourses;
         console.log(
             'courseids of removedCourses from Storage -> ' + removedCourses
         );
-        // console.log('length of removedCourses -> ' + removedCourses.length);
+
         if (removedCourses.length === 0) return;
 
         let courses = document.getElementsByClassName('coursebox');
@@ -42,11 +52,12 @@ function removeDisplayOffCourses(removedCourses) {
     });
 }
 
-function addDisplayOnOffButton(courses, removedCourses) {
+function addDisplayOnOffButton() {
     const myCourseList = document.getElementById('frontpage-course-list');
     const disappearedCourseList = document.getElementById(
         'display-off-course-list'
     );
+    const courses = document.getElementsByClassName('coursebox');
 
     Array.from(courses).forEach((c) => {
         const btn = document.createElement('button');
@@ -59,9 +70,8 @@ function addDisplayOnOffButton(courses, removedCourses) {
                 moveCourseTo(c, disappearedCourseList);
                 btn.textContent = '表示';
 
-                saveCourseid(c, removedCourses);
+                saveCourseid(c);
             } else {
-                console.log('addEventListener removeIdFromStorage');
                 moveCourseTo(c, myCourseList);
                 btn.textContent = '非表示';
                 removeIdFromStorage(c.dataset.courseid);
@@ -124,24 +134,17 @@ function addCourseListToggleButton() {
     );
 }
 
-// let removedCourses = [];
 // コースを非表示にした際にcourseidを記録
-function saveCourseid(course, removedCourses) {
-    // let removedCourses = [];
+function saveCourseid(course) {
     removedCourses.push(course.dataset.courseid);
     chrome.storage.sync.set({ removedCourses: removedCourses }, () => {
-        console.log('array of courseid: ' + removedCourses);
-        // chrome.storage.sync.get(['removedCourses'], (items) => {
-        //     console.log('removedCourses -> ' + items.removedCourses);
-        // });
+        console.log('saveCourseid() : removedCourseid -> ' + removedCourses);
     });
 }
 
 // 編集モードを実装したら、編集モードが終了するときに一回だけ実行
 // コースを非表示から表示にする際に記録したcourseidを削除
 function removeIdFromStorage(id) {
-    // console.log('removeIdFromStorage fired!');
-
     let newRemovedCourses = [];
     chrome.storage.sync.get(['removedCourses'], (items) => {
         for (const i of items.removedCourses) {
@@ -149,26 +152,15 @@ function removeIdFromStorage(id) {
                 newRemovedCourses.push(i);
             }
         }
-        // console.log('newRemovedCourses -> ' + newRemovedCourses);
 
         chrome.storage.sync.set({ removedCourses: newRemovedCourses }, () => {
             chrome.storage.sync.get(['removedCourses'], (items) => {
-                console.log('newRemovedCourses -> ' + items.removedCourses);
+                removedCourses = items.removedCourses;
+                console.log(
+                    'removeIdFromStorage() : newRemovedCourses -> ' +
+                        removedCourses
+                );
             });
         });
     });
 }
-
-(async () => {
-    // await deleteRemovedCoursesInStorage();
-
-    let removedCourses = [];
-    makeDisapperedCourseList();
-
-    removeDisplayOffCourses(removedCourses);
-
-    const courses = document.getElementsByClassName('coursebox');
-    addDisplayOnOffButton(courses, removedCourses);
-
-    addCourseListToggleButton();
-})();
