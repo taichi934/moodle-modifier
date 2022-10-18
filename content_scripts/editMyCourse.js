@@ -49,6 +49,8 @@ function removeDisplayOffCourses() {
                 }
             });
         }
+
+        remapOddEven();
     });
 }
 
@@ -77,6 +79,7 @@ function addDisplayOnOffButton() {
                 removeIdFromStorage(c.dataset.courseid);
             }
             // マイコースのoddとevenのクラスを更新処理
+            remapOddEven();
         });
 
         c.appendChild(btn);
@@ -89,6 +92,21 @@ function moveCourseTo(course, des) {
         des.children[2].insertBefore(course, null);
     } else {
         des.children[2].insertBefore(course, des.children[2].lastChild);
+    }
+}
+
+function remapOddEven() {
+    const courses = document.getElementsByClassName('coursebox');
+
+    // .odd
+    for (let i = 0; i < courses.length; i += 2) {
+        courses[i].classList.remove('even');
+        courses[i].classList.add('odd');
+    }
+    // .even
+    for (let i = 1; i < courses.length; i += 2) {
+        courses[i].classList.remove('odd');
+        courses[i].classList.add('even');
     }
 }
 
