@@ -1,0 +1,11 @@
+.display-off {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.display-off.edit-mode {
+    visibility: visible;
+    opacity: 1;
+    transition: 0.8s;
+}

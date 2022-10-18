@@ -51,6 +51,7 @@
         },
         {
             "matches": ["*://moodle2022.wakayama-u.ac.jp/2022/"],
+            "css": ["content_scripts/css/edit_btn.css"],
             "js": ["content_scripts/editMyCourse.js"],
             "run_at": "document_end"
         }

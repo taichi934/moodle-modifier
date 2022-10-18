@@ -13,11 +13,13 @@ function addEditMode() {
     editBtn.classList.add('edit-btn');
     editBtn.setAttribute('type', 'button');
     editBtn.textContent = '編集';
+    editBtn.addEventListener('click', showDisplayOnOffButton);
 
     const myCourse = document.getElementById('frontpage-course-list');
     myCourse.insertBefore(editBtn, myCourse.children[1]);
 
     const sameEditBtn = editBtn.cloneNode(true);
+    sameEditBtn.addEventListener('click', showDisplayOnOffButton);
     const disappearedCourseList = document.getElementById(
         'display-off-course-list'
     );
@@ -25,6 +27,15 @@ function addEditMode() {
         sameEditBtn,
         disappearedCourseList.children[1]
     );
+}
+
+function showDisplayOnOffButton(event) {
+    event.target.textContent =
+        event.target.textContent === '編集' ? '完了' : '編集';
+    const btns = document.getElementsByClassName('display-off');
+    for (const el of btns) {
+        el.classList.toggle('edit-mode');
+    }
 }
 
 let removedCourses = [];
@@ -159,6 +170,17 @@ function addCourseListToggleButton() {
         Array.from(courses).forEach((c) => {
             c.style.display = 'block';
         });
+
+        // 編集中にリストを入れ替えたとき用
+        const editBtns = document.getElementsByClassName('edit-btn');
+        for (const el of editBtns) {
+            el.textContent = '編集';
+        }
+        const btns = document.getElementsByClassName('display-off');
+        // if (btns[0].classList === 'edit-mode')
+        for (const el of btns) {
+            el.classList.remove('edit-mode');
+        }
     }
     btn.addEventListener('click', toggle);
 
