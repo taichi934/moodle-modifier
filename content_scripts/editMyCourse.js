@@ -3,9 +3,29 @@
 
     makeDisapperedCourseList();
     removeDisplayOffCourses();
+    addEditMode();
     addDisplayOnOffButton();
     addCourseListToggleButton();
 })();
+
+function addEditMode() {
+    const editBtn = document.createElement('button');
+    editBtn.classList.add('edit-btn');
+    editBtn.setAttribute('type', 'button');
+    editBtn.textContent = '編集';
+
+    const myCourse = document.getElementById('frontpage-course-list');
+    myCourse.insertBefore(editBtn, myCourse.children[1]);
+
+    const sameEditBtn = editBtn.cloneNode(true);
+    const disappearedCourseList = document.getElementById(
+        'display-off-course-list'
+    );
+    disappearedCourseList.insertBefore(
+        sameEditBtn,
+        disappearedCourseList.children[1]
+    );
+}
 
 let removedCourses = [];
 
@@ -89,9 +109,9 @@ function addDisplayOnOffButton() {
 function moveCourseTo(course, des) {
     course.style.display = 'none';
     if (des.id === 'display-off-course-list') {
-        des.children[2].insertBefore(course, null);
+        des.children[3].insertBefore(course, null);
     } else {
-        des.children[2].insertBefore(course, des.children[2].lastChild);
+        des.children[3].insertBefore(course, des.children[3].lastChild);
     }
 }
 
