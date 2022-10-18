@@ -1,38 +1,12 @@
 (() => {
-    const courses = document.getElementsByClassName('coursebox');
-    addDisplayOffButton(courses);
-
     makeDisapperedCourseList();
+    removeDisplayOffCourses();
+
+    const courses = document.getElementsByClassName('coursebox');
+    addDisplayOnOffButton(courses);
 
     addCourseListToggleButton();
 })();
-
-function addDisplayOffButton(courses) {
-    Array.from(courses).forEach((c) => {
-        const btn = document.createElement('button');
-        btn.classList.add('display-off');
-        btn.setAttribute('type', 'button');
-        btn.textContent = '非表示';
-        btn.addEventListener('click', () => {
-            const myCourseList = document.getElementById(
-                'frontpage-course-list'
-            );
-            const disappearedCourseList = document.getElementById(
-                'display-off-course-list'
-            );
-            if (btn.textContent === '非表示') {
-                moveCourseTo(c, disappearedCourseList);
-                btn.textContent = '表示';
-            } else {
-                moveCourseTo(c, myCourseList);
-                btn.textContent = '非表示';
-            }
-            // マイコースのoddとevenのクラスを更新処理
-        });
-
-        c.appendChild(btn);
-    });
-}
 
 function makeDisapperedCourseList() {
     const disappearedCourseList = document.createElement('div');
@@ -46,9 +20,42 @@ function makeDisapperedCourseList() {
     myCourse.insertAdjacentElement('afterend', disappearedCourseList);
 }
 
+function addDisplayOnOffButton(courses) {
+    const myCourseList = document.getElementById('frontpage-course-list');
+    const disappearedCourseList = document.getElementById(
+        'display-off-course-list'
+    );
+
+    Array.from(courses).forEach((c) => {
+        const btn = document.createElement('button');
+        btn.classList.add('display-off');
+        btn.setAttribute('type', 'button');
+        btn.textContent = '非表示';
+
+        btn.addEventListener('click', () => {
+            if (btn.textContent === '非表示') {
+                moveCourseTo(c, disappearedCourseList);
+                btn.textContent = '表示';
+
+                saveCourseid(c);
+            } else {
+                moveCourseTo(c, myCourseList);
+                btn.textContent = '非表示';
+            }
+            // マイコースのoddとevenのクラスを更新処理
+        });
+
+        c.appendChild(btn);
+    });
+}
+
 function moveCourseTo(course, des) {
     course.style.display = 'none';
-    des.children[2].insertBefore(course, des.children[2].lastChild);
+    if (des.id === 'display-off-course-list') {
+        des.children[2].insertBefore(course, null);
+    } else {
+        des.children[2].insertBefore(course, des.children[2].lastChild);
+    }
 }
 
 // マイコースと非表示にしたコースリストの切り替え
@@ -91,4 +98,35 @@ function addCourseListToggleButton() {
         samebtn,
         disappearedCourseList.children[1]
     );
+}
+
+let removedCourses = [];
+function saveCourseid(course) {
+    removedCourses.push(course.dataset.courseid);
+    chrome.storage.sync.set({ removedCourses: removedCourses }, () => {
+        console.log('courseid: ' + removedCourses);
+        chrome.storage.sync.get(null, (item) => {
+            console.log('keys of data -> ' + Object.keys(item));
+            console.log('removedCourses -> ' + typeof item.removedCourses);
+        });
+    });
+}
+
+function removeDisplayOffCourses() {
+    chrome.storage.sync.get(['removedCourses'], (item) => {
+        removedCourses = item.removedCourses; // array
+        console.log('courseids of removedCourses -> ' + removedCourses);
+
+        let courses = document.getElementsByClassName('coursebox');
+        const disappearedCourseList = document.getElementById(
+            'display-off-course-list'
+        );
+
+        for (id of removedCourses) {
+            Array.from(courses).forEach((c) => {
+                if (id === c.dataset.courseid)
+                    moveCourseTo(c, disappearedCourseList);
+            });
+        }
+    });
 }
