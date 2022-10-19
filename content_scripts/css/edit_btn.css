@@ -1,11 +1,32 @@
 .display-off {
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.4s ease;
+    display: none;
 }
 
 .display-off.edit-mode {
-    visibility: visible;
-    opacity: 1;
-    transition: 0.8s;
+    display: inline-block;
+    animation: appear 0.8s ease;
+}
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.coursebox > div {
+    display: inline-block;
+}
+
+.coursebox > .info.edit-mode {
+    animation: slide 0.4s ease-out forwards;
+}
+@keyframes slide {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(20px);
+    }
 }
