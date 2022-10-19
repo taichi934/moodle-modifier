@@ -5,6 +5,7 @@
     --borderColor: rgba(0, 0, 0, 0.125);
     --linkColor: #0f6fc5;
     --radius: 6px;
+    --hoverColor: rgb(218, 218, 218);
 }
 
 :root.dark {
@@ -14,6 +15,7 @@
     --borderColor: #30363d;
     --linkColor: #58a6ff;
     --radius: 6px;
+    --hoverColor: #7e8388;
 }
 
 .coursebox {
@@ -85,4 +87,15 @@
     border-radius: var(--radius);
     background-color: var(--headerBackgroundColor);
     margin-right: 0.5rem;
+}
+
+.course-list-toggle-btn:hover,
+.edit-btn:hover {
+    background-color: var(--hoverColor);
+}
+
+.dark .course-list-toggle-btn:hover,
+.dark .edit-btn:hover {
+    background-color: var(--backgroundColor);
+    color: var(--hoverColor);
 }
