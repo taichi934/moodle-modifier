@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "moodle modifier",
-    "description": "Login automatically, change the layout of Moodle, add a calendar, hide chosen courses, and support dark mode",
+    "description": "あると便利な機能を詰め込んだ moodle 用の拡張機能；自動ログイン、提出物が記載されたカレンダーの追加、必要のない講義の非表示、ダークモード対応など",
     "version": "1.5.0",
 
     "icons": {
