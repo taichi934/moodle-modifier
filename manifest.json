@@ -4,6 +4,7 @@
     "description": "Login automatically, change the layout of Moodle, and support dark mode",
     "version": "1.5.0",
 
+
     "icons": {
         "48": "images/MoodleModifier-logo-icon48.png",
         "128": "images/MoodleModifier-logo-icon128.png"
