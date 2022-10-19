@@ -8,6 +8,72 @@
     addCourseListToggleButton();
 })();
 
+let removedCourses = [];
+
+// デバッグ時にstorageを全消去する用
+// async function deleteRemovedCoursesInStorage() {
+//     await chrome.storage.sync.clear();
+// }
+
+function makeDisapperedCourseList() {
+    const disappearedCourseList = document.createElement('div');
+    disappearedCourseList.id = 'display-off-course-list';
+    disappearedCourseList.innerHTML =
+        '<h2>マイコース<span>（非表示）</span></h2><div class="courses frontpage-course-list-enrolled"></div>';
+
+    disappearedCourseList.style.display = 'none';
+
+    const myCourse = document.getElementById('frontpage-course-list');
+    myCourse.insertAdjacentElement('afterend', disappearedCourseList);
+}
+
+function removeDisplayOffCourses() {
+    chrome.storage.sync.get(['removedCourses'], (items) => {
+        removedCourses = items.removedCourses;
+        console.log(
+            'courseids of removedCourses from Storage -> ' + removedCourses
+        );
+
+        if (!removedCourses) {
+            removedCourses = [];
+            return;
+        }
+
+        let courses = document.getElementsByClassName('coursebox');
+        const disappearedCourseList = document.getElementById(
+            'display-off-course-list'
+        );
+
+        for (const id of removedCourses) {
+            Array.from(courses).forEach((c) => {
+                let cid = c.dataset.courseid;
+                if (id === cid) {
+                    moveCourseTo(c, disappearedCourseList);
+                    c.children[0].textContent = '表示';
+                }
+            });
+        }
+
+        remapOddEven();
+    });
+}
+
+// 非表示にしたりしたときにコースの背景連続しないように
+function remapOddEven() {
+    const courses = document.getElementsByClassName('coursebox');
+
+    // .odd
+    for (let i = 0; i < courses.length; i += 2) {
+        courses[i].classList.remove('even');
+        courses[i].classList.add('odd');
+    }
+    // .even
+    for (let i = 1; i < courses.length; i += 2) {
+        courses[i].classList.remove('odd');
+        courses[i].classList.add('even');
+    }
+}
+
 function addEditMode() {
     const editBtn = document.createElement('button');
     editBtn.classList.add('edit-btn', 'btn');
@@ -47,53 +113,6 @@ function showDisplayOnOffButton(event) {
     for (const el of titles) {
         el.classList.toggle('edit-mode');
     }
-}
-
-let removedCourses = [];
-
-// デバッグ時にstorageを全消去する用
-// async function deleteRemovedCoursesInStorage() {
-//     await chrome.storage.sync.clear();
-// }
-
-function makeDisapperedCourseList() {
-    const disappearedCourseList = document.createElement('div');
-    disappearedCourseList.id = 'display-off-course-list';
-    disappearedCourseList.innerHTML =
-        '<h2>マイコース<span>（非表示）</span></h2><div class="courses frontpage-course-list-enrolled"></div>';
-
-    disappearedCourseList.style.display = 'none';
-
-    const myCourse = document.getElementById('frontpage-course-list');
-    myCourse.insertAdjacentElement('afterend', disappearedCourseList);
-}
-
-function removeDisplayOffCourses() {
-    chrome.storage.sync.get(['removedCourses'], (items) => {
-        removedCourses = items.removedCourses;
-        console.log(
-            'courseids of removedCourses from Storage -> ' + removedCourses
-        );
-
-        if (removedCourses.length === 0) return;
-
-        let courses = document.getElementsByClassName('coursebox');
-        const disappearedCourseList = document.getElementById(
-            'display-off-course-list'
-        );
-
-        for (const id of removedCourses) {
-            Array.from(courses).forEach((c) => {
-                let cid = c.dataset.courseid;
-                if (id === cid) {
-                    moveCourseTo(c, disappearedCourseList);
-                    c.children[0].textContent = '表示';
-                }
-            });
-        }
-
-        remapOddEven();
-    });
 }
 
 function addDisplayOnOffButton() {
@@ -137,20 +156,12 @@ function moveCourseTo(course, des) {
     }
 }
 
-// 非表示にしたりしたときにコースの背景連続しないように
-function remapOddEven() {
-    const courses = document.getElementsByClassName('coursebox');
-
-    // .odd
-    for (let i = 0; i < courses.length; i += 2) {
-        courses[i].classList.remove('even');
-        courses[i].classList.add('odd');
-    }
-    // .even
-    for (let i = 1; i < courses.length; i += 2) {
-        courses[i].classList.remove('odd');
-        courses[i].classList.add('even');
-    }
+// コースを非表示にした際にcourseidを記録
+function saveCourseid(course) {
+    removedCourses.push(course.dataset.courseid);
+    chrome.storage.sync.set({ removedCourses: removedCourses }, () => {
+        console.log('saveCourseid() : removedCourseid -> ' + removedCourses);
+    });
 }
 
 // マイコースと非表示にしたコースリストの切り替え
@@ -210,20 +221,6 @@ function addCourseListToggleButton() {
         '#display-off-course-list .btns-wrapper'
     );
     anotherBtnsWrapper.prepend(samebtn);
-
-    // myCourse.insertBefore(btn, myCourse.children[1]);
-    // disappearedCourseList.insertBefore(
-    //     samebtn,
-    //     disappearedCourseList.children[1]
-    // );
-}
-
-// コースを非表示にした際にcourseidを記録
-function saveCourseid(course) {
-    removedCourses.push(course.dataset.courseid);
-    chrome.storage.sync.set({ removedCourses: removedCourses }, () => {
-        console.log('saveCourseid() : removedCourseid -> ' + removedCourses);
-    });
 }
 
 // 編集モードを実装したら、編集モードが終了するときに一回だけ実行
