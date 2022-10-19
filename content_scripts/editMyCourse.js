@@ -10,21 +10,28 @@
 
 function addEditMode() {
     const editBtn = document.createElement('button');
-    editBtn.classList.add('edit-btn');
+    editBtn.classList.add('edit-btn', 'btn');
     editBtn.setAttribute('type', 'button');
     editBtn.textContent = '編集';
     editBtn.addEventListener('click', showDisplayOnOffButton);
 
-    const myCourse = document.getElementById('frontpage-course-list');
-    myCourse.insertBefore(editBtn, myCourse.children[1]);
+    const btnsWrapper = document.createElement('div');
+    btnsWrapper.className = 'btns-wrapper';
+    btnsWrapper.prepend(editBtn);
 
-    const sameEditBtn = editBtn.cloneNode(true);
-    sameEditBtn.addEventListener('click', showDisplayOnOffButton);
+    const myCourse = document.getElementById('frontpage-course-list');
+    myCourse.insertBefore(btnsWrapper, myCourse.children[1]);
+
+    const sameBtnsWrapper = btnsWrapper.cloneNode(true);
+    sameBtnsWrapper.children[0].addEventListener(
+        'click',
+        showDisplayOnOffButton
+    );
     const disappearedCourseList = document.getElementById(
         'display-off-course-list'
     );
     disappearedCourseList.insertBefore(
-        sameEditBtn,
+        sameBtnsWrapper,
         disappearedCourseList.children[1]
     );
 }
@@ -124,9 +131,9 @@ function addDisplayOnOffButton() {
 function moveCourseTo(course, des) {
     course.style.display = 'none';
     if (des.id === 'display-off-course-list') {
-        des.children[3].insertBefore(course, null);
+        des.children[2].insertBefore(course, null);
     } else {
-        des.children[3].insertBefore(course, des.children[3].lastChild);
+        des.children[2].insertBefore(course, des.children[2].lastChild);
     }
 }
 
@@ -149,7 +156,7 @@ function remapOddEven() {
 // マイコースと非表示にしたコースリストの切り替え
 function addCourseListToggleButton() {
     const btn = document.createElement('button');
-    btn.className = 'course-list-toggle-btn';
+    btn.className = 'course-list-toggle-btn btn';
     btn.setAttribute('type', 'button');
     btn.textContent = '非表示のコースリスト';
 
@@ -194,11 +201,21 @@ function addCourseListToggleButton() {
     samebtn.textContent = 'コースリスト';
     samebtn.addEventListener('click', toggle);
 
-    myCourse.insertBefore(btn, myCourse.children[1]);
-    disappearedCourseList.insertBefore(
-        samebtn,
-        disappearedCourseList.children[1]
+    const btnsWrapper = document.querySelector(
+        '#frontpage-course-list .btns-wrapper'
     );
+    btnsWrapper.prepend(btn);
+
+    const anotherBtnsWrapper = document.querySelector(
+        '#display-off-course-list .btns-wrapper'
+    );
+    anotherBtnsWrapper.prepend(samebtn);
+
+    // myCourse.insertBefore(btn, myCourse.children[1]);
+    // disappearedCourseList.insertBefore(
+    //     samebtn,
+    //     disappearedCourseList.children[1]
+    // );
 }
 
 // コースを非表示にした際にcourseidを記録

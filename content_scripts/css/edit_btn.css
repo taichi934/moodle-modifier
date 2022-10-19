@@ -1,3 +1,21 @@
+:root {
+    --backgroundColor: #fff;
+    --color: #212529;
+    /* --headerBackgroundColor:; */
+    --borderColor: rgba(0, 0, 0, 0.125);
+    --linkColor: #0f6fc5;
+    --radius: 6px;
+}
+
+:root.dark {
+    --backgroundColor: #0d1117;
+    --color: #c9d1d9;
+    --headerBackgroundColor: #161b22;
+    --borderColor: #30363d;
+    --linkColor: #58a6ff;
+    --radius: 6px;
+}
+
 .coursebox {
     position: relative;
     padding: 2rem;
@@ -12,6 +30,13 @@
     transform: translateY(-50%);
     /* top: 16px; */
     left: 10px;
+
+    /* btn design */
+    border-width: 0;
+    border-radius: 20px;
+    background: #ff1919;
+    color: white;
+    font-weight: bold;
 }
 
 .display-off.edit-mode {
@@ -42,4 +67,22 @@
     100% {
         transform: translateX(65px);
     }
+}
+
+#frontpage-course-list,
+#display-off-course-list {
+    position: relative;
+}
+.btns-wrapper {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+.btns-wrapper .course-list-toggle-btn,
+.btns-wrapper .edit-btn {
+    color: var(--color);
+    border-color: var(--borderColor);
+    border-radius: var(--radius);
+    background-color: var(--headerBackgroundColor);
+    margin-right: 0.5rem;
 }
