@@ -1,5 +1,17 @@
+.coursebox {
+    position: relative;
+    padding: 2rem;
+}
+.coursebox > .info {
+    top: 16px;
+}
 .display-off {
     display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* top: 16px; */
+    left: 10px;
 }
 
 .display-off.edit-mode {
@@ -21,12 +33,13 @@
 
 .coursebox > .info.edit-mode {
     animation: slide 0.4s ease-out forwards;
+    /* forwardsはアニメーション完了時にその場にとどまる */
 }
 @keyframes slide {
     0% {
         transform: translateX(0px);
     }
     100% {
-        transform: translateX(20px);
+        transform: translateX(65px);
     }
 }
