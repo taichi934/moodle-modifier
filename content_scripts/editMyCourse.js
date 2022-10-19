@@ -36,6 +36,10 @@ function showDisplayOnOffButton(event) {
     for (const el of btns) {
         el.classList.toggle('edit-mode');
     }
+    const titles = document.querySelectorAll('.coursebox > .info');
+    for (const el of titles) {
+        el.classList.toggle('edit-mode');
+    }
 }
 
 let removedCourses = [];
@@ -76,7 +80,7 @@ function removeDisplayOffCourses() {
                 let cid = c.dataset.courseid;
                 if (id === cid) {
                     moveCourseTo(c, disappearedCourseList);
-                    c.children[2].textContent = '表示';
+                    c.children[0].textContent = '表示';
                 }
             });
         }
@@ -113,7 +117,7 @@ function addDisplayOnOffButton() {
             remapOddEven();
         });
 
-        c.appendChild(btn);
+        c.prepend(btn);
     });
 }
 
@@ -169,6 +173,8 @@ function addCourseListToggleButton() {
         const courses = document.getElementsByClassName('coursebox');
         Array.from(courses).forEach((c) => {
             c.style.display = 'block';
+            // コースリストを切り替えるときは編集モードをオフ
+            c.children[1].classList.remove('edit-mode');
         });
 
         // 編集中にリストを入れ替えたとき用
