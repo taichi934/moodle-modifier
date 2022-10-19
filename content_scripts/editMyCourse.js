@@ -1,11 +1,13 @@
 (() => {
-    // await deleteRemovedCoursesInStorage();
+    window.addEventListener('DOMContentLoaded', () => {
+        // await deleteRemovedCoursesInStorage();
 
-    makeDisapperedCourseList();
-    removeDisplayOffCourses();
-    addEditMode();
-    addDisplayOnOffButton();
-    addCourseListToggleButton();
+        makeDisapperedCourseList();
+        removeDisplayOffCourses();
+        addEditMode();
+        addDisplayOnOffButton();
+        addCourseListToggleButton();
+    });
 })();
 
 let removedCourses = [];
