@@ -1,9 +1,8 @@
 {
     "manifest_version": 3,
     "name": "moodle modifier",
-    "description": "Login automatically, change the layout of Moodle, and support dark mode",
+    "description": "Login automatically, change the layout of Moodle, add a calendar, hide chosen courses, and support dark mode",
     "version": "1.5.0",
-
 
     "icons": {
         "48": "images/MoodleModifier-logo-icon48.png",
