@@ -1,25 +1,27 @@
 (() => {
-  const toggleDarkMode = (isDarkMode) => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
+    let isDarkMode;
+    chrome.storage.sync.get(['isDarkMode'], (items) => {
+        isDarkMode = items.isDarkMode;
+        if (isDarkMode === undefined) {
+            isDarkMode = false;
+        }
+        toggleDarkMode(isDarkMode);
+    });
 
-  let isDarkMode;
-  chrome.storage.sync.get(['isDarkMode'], (items) => {
-    isDarkMode = items.isDarkMode;
-    if (isDarkMode === undefined) {
-      isDarkMode = false;
-    }
-    toggleDarkMode(isDarkMode);
-  });
+    // popupでカラーテーマを変更したとき
+    chrome.storage.onChanged.addListener((changes) => {
+        if (changes.isDarkMode === undefined) return;
 
-  // popupでカラーテーマを変更したとき
-  chrome.storage.onChanged.addListener((changes) => {
-    isDarkMode = changes.isDarkMode;
-    // isDarkMode <= {newValue: true, oldValue: false}
-    toggleDarkMode(isDarkMode.newValue);
-  });
+        isDarkMode = changes.isDarkMode;
+        // isDarkMode <= {newValue: true, oldValue: false}
+        toggleDarkMode(isDarkMode.newValue);
+    });
 })();
+
+function toggleDarkMode(isDarkMode) {
+    if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+}
