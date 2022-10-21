@@ -10,26 +10,27 @@
     iframeArray.pop();
 
     for (const iframe of iframeArray) {
-        const pArray = iframe.contentDocument.getElementsByTagName('p');
+        addWordCountDOM(iframe);
+        const pArray = getPtags(iframe); // 入力してないとpないかも．<body></body>だけ
         const textarea = pArray[0].parentNode;
         textarea.onkeydown = () => {
             let count = 0;
-            for (const p of pArray) {
+            const temp_pArray = getPtags(iframe);
+            for (const p of temp_pArray) {
                 if (p.firstChild.length) count += p.firstChild.length;
             }
-            console.log(count + 1);
+            console.log(count);
+            reflectCountToDOM(iframe, count);
         };
-
-        // addWordCount(iframe, count);
     }
 })();
 
-function addWordCount(iframe, count) {
+function addWordCountDOM(iframe) {
     const wordCountWrapper = iframe.contentDocument.createElement('div');
     wordCountWrapper.className = 'word-count-wrapper';
     const wordCount = contentDocument.createElement('span');
     wordCount.className = 'word-count';
-    wordCount.innerHTML = `<span>文字数：${count} 文字</span>`;
+    wordCount.innerHTML = `<span>文字数：0 文字</span>`;
     wordCountWrapper.append(wordCount);
 
     iframe.contentDocument
@@ -37,7 +38,11 @@ function addWordCount(iframe, count) {
         .append(wordCountWrapper);
 }
 
-// 複数iframeがあり、最後のiframeは拡張機能が挿入したもの
-// let iframe = document.getElementsByTagName("iframe")[0]
-// iframe.contentDocument.getElementsByTagName("p")
-// iframe.contentDocument.getElementsByTagName("p")[0].firstChild.length;
+function getPtags(iframe) {
+    return iframe.contentDocument.getElementsByTagName('p');
+}
+
+function reflectCountToDOM(iframe, count) {
+    const span = iframe.contentDocument.getElementsByClassName('word-count')[0];
+    span.innerHTML = `<span>文字数：${count} 文字</span>`;
+}
