@@ -1,0 +1,8 @@
+{
+  "env": {
+    "commonjs": true
+  }
+  // "rules": {
+  //   "no-console": "off"
+  // }
+}
