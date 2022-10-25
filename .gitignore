@@ -1,3 +1,7 @@
 *.zip
 
 memo_snipet
+
+node_modules
+
+dist
