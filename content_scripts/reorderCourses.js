@@ -1,3 +1,5 @@
+const { CHAR_FORM_FEED } = require('picomatch/lib/constants');
+
 (() => {
     window.addEventListener('load', setCoursesDraggable);
 })();
@@ -73,4 +75,19 @@ function remapOddEven() {
         courses[i].classList.remove('odd');
         courses[i].classList.add('even');
     }
+}
+
+// 編集モードを終える時に呼び出す
+function saveCourseOrder() {
+    let order = Array();
+    const courses = document.getElementsByClassName('coursebox');
+
+    // 並び順を配列に
+    for (const el of Array.from(courses)) {
+        order.push(el.dataset.courseid);
+    }
+
+    chrome.storage.sync.set({ courseOrder: order }, () => {
+        console.log('saveCourseOrder() : courseOrder -> ' + order);
+    });
 }
