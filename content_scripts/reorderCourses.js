@@ -1,8 +1,34 @@
-const { CHAR_FORM_FEED } = require('picomatch/lib/constants');
-
 (() => {
-    window.addEventListener('load', setCoursesDraggable);
+    window.addEventListener('DOMContentLoaded', () => {
+        sortCourses();
+        setCoursesDraggable();
+    });
 })();
+
+function sortCourses() {
+    let order = [];
+    chrome.storage.sync.get(['courseOrder'], (items) => {
+        if (!items.courseOrder) return;
+        order = items.courseOrder;
+        console.log('course order -> ' + order);
+
+        // frontpage-course-listのコースだけ
+        const courses = document.getElementsByClassName('courses')[0];
+
+        for (let i = 0; i < order.length; i++) {
+            for (let j = i; j < courses.children.length; j++) {
+                if (courses.children[j].dataset.courseid === order[i]) {
+                    courses.insertBefore(
+                        courses.children[j],
+                        courses.children[i]
+                    );
+                }
+            }
+        }
+
+        remapOddEven();
+    });
+}
 
 function setCoursesDraggable() {
     const courses = document.getElementsByClassName('coursebox');
@@ -59,6 +85,9 @@ function onDrop(event) {
 
     // コースの配色を更新
     remapOddEven();
+
+    // 編集モード抜ける時の実装をするまでとりあえずここで呼び出す
+    saveCourseOrder();
 }
 
 // 非表示にしたりしたときにコースの背景連続しないように
@@ -79,11 +108,15 @@ function remapOddEven() {
 
 // 編集モードを終える時に呼び出す
 function saveCourseOrder() {
-    let order = Array();
-    const courses = document.getElementsByClassName('coursebox');
+    let order = [];
+
+    // 表示してるコースだけ
+    const courses = document.querySelectorAll(
+        '#frontpage-course-list .coursebox'
+    );
 
     // 並び順を配列に
-    for (const el of Array.from(courses)) {
+    for (const el of courses) {
         order.push(el.dataset.courseid);
     }
 
