@@ -15,19 +15,27 @@ function setCoursesDraggable() {
     }
 }
 
+// ドラッグされて動く側
 function onDragStart(event) {
     event.dataTransfer.setData(
         'text/plane',
         event.currentTarget.dataset.courseid
     );
+
+    // event.currentTarget and this means same
     event.currentTarget.style.opacity = 0.4;
 }
 
+// ドラッグされたもので覆われる側
 function onDragOver(event) {
     event.preventDefault();
-    event.currentTarget.style.borderTop = '3px solid blue';
+    // event.targetだと子要素がトリガーされる
+    // イベントはdraggableまでバブリングする
+    // バブリングしてトリガーされた現在の要素は event.currentTarget
+    event.currentTarget.style.borderTop = '5px solid blue';
 }
 
+// ドラッグされたもので覆われる側
 function onDragLeave(event) {
     event.currentTarget.style.borderTop = '';
 }
