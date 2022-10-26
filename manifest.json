@@ -36,7 +36,10 @@
                 "content_scripts/css/show_logo_image_again.css",
                 "content_scripts/css/edit_btn.css"
             ],
-            "js": ["content_scripts/editMyCourse.js"],
+            "js": [
+                "content_scripts/editMyCourse.js",
+                "content_scripts/reorderCourses.js"
+            ],
             "run_at": "document_start"
         },
         {
