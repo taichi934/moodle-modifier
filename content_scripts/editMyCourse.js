@@ -81,7 +81,10 @@ function addEditMode() {
     editBtn.classList.add('edit-btn', 'btn');
     editBtn.setAttribute('type', 'button');
     editBtn.textContent = '編集';
-    editBtn.addEventListener('click', showDisplayOnOffButton);
+    editBtn.addEventListener('click', (event) => {
+        showDisplayOnOffButton(event);
+        toggleDraggable(event); // 編集モードでのみコースの並び替え可
+    });
 
     const btnsWrapper = document.createElement('div');
     btnsWrapper.className = 'btns-wrapper';
@@ -91,10 +94,10 @@ function addEditMode() {
     myCourse.insertBefore(btnsWrapper, myCourse.children[1]);
 
     const sameBtnsWrapper = btnsWrapper.cloneNode(true);
-    sameBtnsWrapper.children[0].addEventListener(
-        'click',
-        showDisplayOnOffButton
-    );
+    sameBtnsWrapper.children[0].addEventListener('click', (event) => {
+        showDisplayOnOffButton(event);
+        toggleDraggable(event); // 編集モードでのみコースの並び替え可
+    });
     const disappearedCourseList = document.getElementById(
         'display-off-course-list'
     );
@@ -115,6 +118,48 @@ function showDisplayOnOffButton(event) {
     for (const el of titles) {
         el.classList.toggle('edit-mode');
     }
+}
+
+function toggleDraggable(event) {
+    const courses = document.getElementsByClassName('coursebox');
+
+    const isEditMode = courses[0].draggable;
+
+    for (const course of Array.from(courses)) {
+        if (course.draggable) {
+            // 編集モードを抜ける
+            course.setAttribute('draggable', 'false');
+        } else {
+            // 編集ボタンを押した場合だけ編集モードに入る
+            if (
+                event.target.textContent === '編集' ||
+                event.target.textContent === '完了'
+            ) {
+                course.setAttribute('draggable', 'true');
+            }
+        }
+    }
+    //　編集モードを抜ける時だけ実行
+    if (isEditMode) saveCourseOrder();
+}
+
+// 編集モードを終える時に呼び出す
+function saveCourseOrder() {
+    let order = [];
+
+    // 表示してるコースだけ
+    const courses = document.querySelectorAll(
+        '#frontpage-course-list .coursebox'
+    );
+
+    // 並び順を配列に
+    for (const el of courses) {
+        order.push(el.dataset.courseid);
+    }
+
+    chrome.storage.sync.set({ courseOrder: order }, () => {
+        console.log('saveCourseOrder() : courseOrder -> ' + order);
+    });
 }
 
 function addDisplayOnOffButton() {
@@ -208,11 +253,17 @@ function addCourseListToggleButton() {
             el.classList.remove('edit-mode');
         }
     }
-    btn.addEventListener('click', toggle);
+    btn.addEventListener('click', (event) => {
+        toggle(event);
+        toggleDraggable(event); // 編集モードでのみコースの並び替え可
+    });
 
     const samebtn = btn.cloneNode(true);
     samebtn.textContent = 'コースリスト';
-    samebtn.addEventListener('click', toggle);
+    samebtn.addEventListener('click', (event) => {
+        toggle(event);
+        toggleDraggable(event);
+    });
 
     const btnsWrapper = document.querySelector(
         '#frontpage-course-list .btns-wrapper'

@@ -40,6 +40,9 @@
     color: white;
     font-weight: bold;
 }
+#display-off-course-list .display-off {
+    background: #2cbd16;
+}
 
 .display-off.edit-mode {
     display: inline-block;
