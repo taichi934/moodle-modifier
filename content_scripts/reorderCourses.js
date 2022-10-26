@@ -13,31 +13,35 @@ function setCoursesDraggable() {
         course.ondragleave = onDragLeave;
         course.ondrop = onDrop;
     }
-
-    console.log('success!');
 }
 
 function onDragStart(event) {
-    event.dataTransfer.setData('text/plane', event.target.dataset.courseid);
-
-    console.log(event.target.dataset.courseid);
+    event.dataTransfer.setData(
+        'text/plane',
+        event.currentTarget.dataset.courseid
+    );
+    event.currentTarget.style.opacity = 0.4;
 }
 
 function onDragOver(event) {
     event.preventDefault();
-    event.target.style.borderTop = '3px solid #fff';
+    event.currentTarget.style.borderTop = '3px solid blue';
 }
 
 function onDragLeave(event) {
-    event.target.style.borderTop = '';
+    event.currentTarget.style.borderTop = '';
 }
 
+// dropされる，受けて側の処理
 function onDrop(event) {
     event.preventDefault();
     const courseid = event.dataTransfer.getData('text/plane');
     const draggingCourse = document.querySelector(
         `div[data-courseid='${courseid}']`
     );
-    event.target.parentNode.insertBefore(draggingCourse, event.target);
-    event.target.style.borderTop = '';
+    draggingCourse.style.opacity = 1;
+
+    const coveredCourse = event.currentTarget; // thisと同じ
+    coveredCourse.parentNode.insertBefore(draggingCourse, coveredCourse);
+    coveredCourse.style.borderTop = '';
 }
