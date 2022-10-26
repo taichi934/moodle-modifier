@@ -39,6 +39,7 @@ function setCoursesDraggable() {
         course.ondragstart = onDragStart;
         course.ondragover = onDragOver;
         course.ondragleave = onDragLeave;
+        course.ondragend = onDragEnd;
         course.ondrop = onDrop;
     }
 }
@@ -67,6 +68,12 @@ function onDragOver(event) {
 // ドラッグされたもので覆われる側
 function onDragLeave(event) {
     event.currentTarget.style.borderTop = '';
+}
+
+// ドラッグされている側．捕まれてるもの
+// 意味ないところにドロップされたとき用
+function onDragEnd(event) {
+    event.currentTarget.style.opacity = 1;
 }
 
 // dropされる，受けて側の処理
