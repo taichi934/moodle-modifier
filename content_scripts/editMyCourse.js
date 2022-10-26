@@ -81,7 +81,10 @@ function addEditMode() {
     editBtn.classList.add('edit-btn', 'btn');
     editBtn.setAttribute('type', 'button');
     editBtn.textContent = '編集';
-    editBtn.addEventListener('click', showDisplayOnOffButton);
+    editBtn.addEventListener('click', (event) => {
+        showDisplayOnOffButton(event);
+        toggleDraggable(); // 編集モードでのみコースの並び替え可
+    });
 
     const btnsWrapper = document.createElement('div');
     btnsWrapper.className = 'btns-wrapper';
@@ -115,6 +118,42 @@ function showDisplayOnOffButton(event) {
     for (const el of titles) {
         el.classList.toggle('edit-mode');
     }
+}
+
+function toggleDraggable() {
+    const courses = document.getElementsByClassName('coursebox');
+
+    const isEditMode = courses[0].draggable;
+    for (const course of Array.from(courses)) {
+        if (course.draggable) {
+            // 編集モードを抜ける
+            course.setAttribute('draggable', 'false');
+        } else {
+            // 編集モードに入る
+            course.setAttribute('draggable', 'true');
+        }
+    }
+    //　編集モードを抜ける時だけ実行
+    if (isEditMode) saveCourseOrder();
+}
+
+// 編集モードを終える時に呼び出す
+function saveCourseOrder() {
+    let order = [];
+
+    // 表示してるコースだけ
+    const courses = document.querySelectorAll(
+        '#frontpage-course-list .coursebox'
+    );
+
+    // 並び順を配列に
+    for (const el of courses) {
+        order.push(el.dataset.courseid);
+    }
+
+    chrome.storage.sync.set({ courseOrder: order }, () => {
+        console.log('saveCourseOrder() : courseOrder -> ' + order);
+    });
 }
 
 function addDisplayOnOffButton() {

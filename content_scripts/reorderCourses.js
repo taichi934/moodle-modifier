@@ -34,7 +34,7 @@ function setCoursesDraggable() {
     const courses = document.getElementsByClassName('coursebox');
 
     for (const course of Array.from(courses)) {
-        course.setAttribute('draggable', 'true');
+        // course.setAttribute('draggable', 'true');
 
         course.ondragstart = onDragStart;
         course.ondragover = onDragOver;
@@ -86,8 +86,8 @@ function onDrop(event) {
     // コースの配色を更新
     remapOddEven();
 
-    // 編集モード抜ける時の実装をするまでとりあえずここで呼び出す
-    saveCourseOrder();
+    // // 編集モード抜ける時の実装をするまでとりあえずここで呼び出す
+    // saveCourseOrder();
 }
 
 // 非表示にしたりしたときにコースの背景連続しないように
@@ -106,21 +106,21 @@ function remapOddEven() {
     }
 }
 
-// 編集モードを終える時に呼び出す
-function saveCourseOrder() {
-    let order = [];
+// // 編集モードを終える時に呼び出す
+// function saveCourseOrder() {
+//     let order = [];
 
-    // 表示してるコースだけ
-    const courses = document.querySelectorAll(
-        '#frontpage-course-list .coursebox'
-    );
+//     // 表示してるコースだけ
+//     const courses = document.querySelectorAll(
+//         '#frontpage-course-list .coursebox'
+//     );
 
-    // 並び順を配列に
-    for (const el of courses) {
-        order.push(el.dataset.courseid);
-    }
+//     // 並び順を配列に
+//     for (const el of courses) {
+//         order.push(el.dataset.courseid);
+//     }
 
-    chrome.storage.sync.set({ courseOrder: order }, () => {
-        console.log('saveCourseOrder() : courseOrder -> ' + order);
-    });
-}
+//     chrome.storage.sync.set({ courseOrder: order }, () => {
+//         console.log('saveCourseOrder() : courseOrder -> ' + order);
+//     });
+// }
