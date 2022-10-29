@@ -5,6 +5,7 @@
     });
 })();
 
+// storageからコースの並びを取得して、その順番に並び変える
 function sortCourses() {
     let order = [];
     chrome.storage.sync.get(['courseOrder'], (items) => {
@@ -15,6 +16,7 @@ function sortCourses() {
         // frontpage-course-listのコースだけ
         const courses = document.getElementsByClassName('courses')[0];
 
+        // sort
         for (let i = 0; i < order.length; i++) {
             for (let j = i; j < courses.children.length; j++) {
                 if (courses.children[j].dataset.courseid === order[i]) {
@@ -52,7 +54,7 @@ function onDragStart(event) {
     );
 
     // event.currentTarget and this means same
-    event.currentTarget.style.opacity = 0.4;
+    event.currentTarget.style.opacity = 0.3;
 }
 
 // ドラッグされたもので覆われる側
@@ -112,22 +114,3 @@ function remapOddEven() {
         courses[i].classList.add('even');
     }
 }
-
-// // 編集モードを終える時に呼び出す
-// function saveCourseOrder() {
-//     let order = [];
-
-//     // 表示してるコースだけ
-//     const courses = document.querySelectorAll(
-//         '#frontpage-course-list .coursebox'
-//     );
-
-//     // 並び順を配列に
-//     for (const el of courses) {
-//         order.push(el.dataset.courseid);
-//     }
-
-//     chrome.storage.sync.set({ courseOrder: order }, () => {
-//         console.log('saveCourseOrder() : courseOrder -> ' + order);
-//     });
-// }

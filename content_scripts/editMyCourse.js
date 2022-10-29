@@ -77,6 +77,7 @@ function remapOddEven() {
 }
 
 function addEditMode() {
+    // マイコース用
     const editBtn = document.createElement('button');
     editBtn.classList.add('edit-btn', 'btn');
     editBtn.setAttribute('type', 'button');
@@ -93,6 +94,7 @@ function addEditMode() {
     const myCourse = document.getElementById('frontpage-course-list');
     myCourse.insertBefore(btnsWrapper, myCourse.children[1]);
 
+    // マイコース（非表示用）
     const sameBtnsWrapper = btnsWrapper.cloneNode(true);
     sameBtnsWrapper.children[0].addEventListener('click', (event) => {
         showDisplayOnOffButton(event);
@@ -116,7 +118,7 @@ function showDisplayOnOffButton(event) {
     }
     const titles = document.querySelectorAll('.coursebox > .info');
     for (const el of titles) {
-        el.classList.toggle('edit-mode');
+        el.classList.toggle('edit-mode'); // cssで要素の位置をずらしてる
     }
 }
 
@@ -130,9 +132,10 @@ function toggleDraggable(event) {
             // 編集モードを抜ける
             course.setAttribute('draggable', 'false');
         } else {
+            // コースリスト切り替えボタンでもこの関数が呼び出されるから、
             // 編集ボタンを押した場合だけ編集モードに入る
             if (
-                event.target.textContent === '編集' ||
+                // 先にshowDisplayOnOffButton()が呼ばれるからボタンのテキストは逆になってる
                 event.target.textContent === '完了'
             ) {
                 course.setAttribute('draggable', 'true');
@@ -242,7 +245,7 @@ function addCourseListToggleButton() {
             c.children[1].classList.remove('edit-mode');
         });
 
-        // 編集中にリストを入れ替えたとき用
+        // 編集中にリストを切り替えたとき用
         const editBtns = document.getElementsByClassName('edit-btn');
         for (const el of editBtns) {
             el.textContent = '編集';
