@@ -61,6 +61,9 @@ function onDragStart(event) {
 function onDragOver(event) {
     event.preventDefault();
 
+    // 編集モードじゃなくてもドラッグ可能なものは存在するから
+    if (!event.currentTarget.draggable) return;
+
     // event.targetだと子要素がトリガーされる
     // イベントはdraggableまでバブリングする
     // バブリングしてトリガーされた現在の要素は event.currentTarget
@@ -81,6 +84,9 @@ function onDragEnd(event) {
 // dropされる，受けて側の処理
 function onDrop(event) {
     event.preventDefault();
+
+    // 編集モードじゃなくてもドラッグ可能なものは存在するから
+    if (!event.currentTarget.draggable) return;
 
     const courseid = event.dataTransfer.getData('text/plane');
     const draggingCourse = document.querySelector(
