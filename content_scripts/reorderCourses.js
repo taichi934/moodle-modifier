@@ -53,7 +53,7 @@ function onDragStart(event) {
         event.currentTarget.dataset.courseid
     );
 
-    // event.currentTarget and this means same
+    // event.currentTarget and this, means same
     event.currentTarget.style.opacity = 0.3;
 }
 
@@ -94,9 +94,6 @@ function onDrop(event) {
 
     // コースの配色を更新
     remapOddEven();
-
-    // // 編集モード抜ける時の実装をするまでとりあえずここで呼び出す
-    // saveCourseOrder();
 }
 
 // 非表示にしたりしたときにコースの背景連続しないように
