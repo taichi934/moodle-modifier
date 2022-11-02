@@ -49,8 +49,8 @@
             ],
             "css": ["content_scripts/css/dark_theme_login.css"],
             "js": [
-                "content_scripts/checkDarkMode.js",
-                "content_scripts/login.js"
+                "content_scripts/login.js",
+                "content_scripts/checkDarkMode.js"
             ],
             "run_at": "document_start"
         }

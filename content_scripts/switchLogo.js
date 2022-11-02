@@ -1,13 +1,11 @@
 (() => {
-    window.addEventListener('DOMContentLoaded', () => {
-        let isDarkMode;
+    let isDarkMode;
 
-        // popupでカラーテーマを変更したとき
-        chrome.storage.onChanged.addListener((changes) => {
-            if (changes.isDarkMode === undefined) return;
-            isDarkMode = changes.isDarkMode;
-            changeLogo(isDarkMode.newValue);
-        });
+    // popupでカラーテーマを変更したとき
+    chrome.storage.onChanged.addListener((changes) => {
+        if (changes.isDarkMode === undefined) return;
+        isDarkMode = changes.isDarkMode;
+        changeLogo(isDarkMode.newValue);
     });
 })();
 
