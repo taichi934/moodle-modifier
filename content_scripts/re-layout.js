@@ -1,39 +1,47 @@
 // 無名関数を定義して呼び出すのが定例っぽい
 (() => {
-  window.addEventListener("DOMContentLoaded", () => {
-    // 自動ログイン
-    const loginLink = document.querySelector(".login");
-    // ログインのリンクがある場合
-    if (loginLink != null) {
-      //click login link
-      const hrefUrl = loginLink.children[0].href;
-      location.assign(hrefUrl);
+    window.addEventListener('DOMContentLoaded', () => {
+        insertBackTransLogo(); // 画像のちらつきを防げる
 
-      // login process continues on loginByCollegeID.js
-    }
+        // 自動ログイン
+        const loginLink = document.querySelector('.login');
+        // ログインのリンクがある場合
+        if (loginLink != null) {
+            //click login link
+            const hrefUrl = loginLink.children[0].href;
+            location.assign(hrefUrl);
 
-    // コースを上に表示
-    const parentDiv = document.querySelector("div[role = 'main']");
-    parentDiv.insertBefore(parentDiv.children[5], parentDiv.children[1]);
-    parentDiv.insertBefore(parentDiv.children[2], parentDiv.children[6]);
+            // login process continues on login.js
+        }
 
-    // header画像を右のナビゲーションの最上部に表示
-    const navRight = document.getElementById("block-region-side-pre");
-    const header = document.getElementsByClassName("card")[0];
-    header.style.marginBottom = "1rem";
-    navRight.insertBefore(header, navRight.children[1]);
+        // コースを上に表示
+        const parentDiv = document.querySelector("div[role = 'main']");
+        parentDiv.insertBefore(parentDiv.children[5], parentDiv.children[1]);
+        parentDiv.insertBefore(parentDiv.children[2], parentDiv.children[6]);
 
-    // リンク集を上に
-    let links = navRight.children[8];
-    const myCourses = navRight.children[2];
-    navRight.insertBefore(links, myCourses);
+        // header画像を右のナビゲーションの最上部に表示
+        const navRight = document.getElementById('block-region-side-pre');
+        const header = document.getElementsByClassName('card')[0];
+        header.style.marginBottom = '1rem';
+        navRight.insertBefore(header, navRight.children[1]);
 
-    // リンク集の中に図書館OPACへのリンクを教育サポートシステムの下に配置
-    const opacLink = document.createElement("p");
-    opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/?lang=0" target="_blank">和歌山大学図書館OPAC</a>`;
+        // リンク集を上に
+        let links = navRight.children[8];
+        const myCourses = navRight.children[2];
+        navRight.insertBefore(links, myCourses);
 
-    // リンク集が余分なdivに囲まれてるから取り除く
-    links = navRight.children[2].children[0].children[1].children[0];
-    links.insertBefore(opacLink, links.children[1]);
-  });
+        // リンク集の中に図書館OPACへのリンクを教育サポートシステムの下に配置
+        const opacLink = document.createElement('p');
+        opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/?lang=0" target="_blank">和歌山大学図書館OPAC</a>`;
+
+        // リンク集が余分なdivに囲まれてるから取り除く
+        links = navRight.children[2].children[0].children[1].children[0];
+        links.insertBefore(opacLink, links.children[1]);
+    });
 })();
+
+// 初めに背景透過の写真にすることでダークモード時のちらつきをなくせる
+function insertBackTransLogo() {
+    const img = document.querySelector('.logo .img-fluid');
+    img.src = chrome.runtime.getURL('images/wadai-logo-trans-complete.png');
+}
