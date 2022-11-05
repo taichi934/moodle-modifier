@@ -5,6 +5,7 @@
     --borderColor: rgba(0, 0, 0, 0.125);
     --linkColor: #0f6fc5;
     --radius: 6px;
+    --readmoreBtnColor: #191c1f;
 }
 
 :root.dark {
@@ -14,6 +15,7 @@
     --borderColor: #30363d;
     --linkColor: #58a6ff;
     --radius: 6px;
+    --readmoreBtnColor: #d7e0e9;
 }
 
 /* re-laout.jsが動作するまでの瞬間でちらつくのを防止するため */
@@ -59,7 +61,7 @@ div#page-content a {
     }
 }
 
-/* 左側のコンテンツ */
+/* 左側のコンテンツ +++++++++++++++++++++++++++++++++++ */
 #region-main {
     /* background-color: var(--headerBackgroundColor) !important; */
     background-color: var(--backgroundColor) !important;
@@ -85,6 +87,37 @@ form#coursesearch button.btn,
     border-color: var(--borderColor);
     border-radius: var(--radius);
     color: var(--color);
+}
+
+/* コースサマリーの省略 +++++++++++++++++++++++++++++++++++++ */
+.summary p {
+    line-height: 1.5;
+}
+/* 短縮する<p> */
+p.partial-text {
+    overflow: hidden !important;
+    color: transparent;
+    background: linear-gradient(180deg, var(--color) 0, transparent 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* -webkit-text-fill-color: transparent; */
+}
+/*  全行表示 */
+p.is-open {
+    height: 100% !important;
+}
+.more-button {
+    color: var(--readmoreBtnColor);
+    width: 70px;
+    padding: 3px 0;
+    border-radius: var(--radius);
+    line-height: 16px;
+    font-size: 14px;
+    /* font-weight: 550; */
+    text-align: center;
+
+    margin-left: auto;
+    transform: translateY(-1.2rem);
 }
 
 /* お知らせコーナー */

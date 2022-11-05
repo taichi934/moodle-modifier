@@ -7,6 +7,8 @@
         addEditMode();
         addDisplayOnOffButton();
         addCourseListToggleButton();
+
+        abbrebiateSummary();
     });
 })();
 
@@ -300,4 +302,67 @@ function removeIdFromStorage(id) {
             });
         });
     });
+}
+
+// summary.firstChildを置き換える
+function abbrebiateSummary() {
+    const summarries = document.querySelectorAll('.summary .no-overflow');
+
+    for (const summary of Array.from(summarries)) {
+        summary.classList.remove('no-overflow'); // .no-overflowのcssを排除するため
+        const moreButton = addMoreButtonAfter(summary);
+
+        const para = concatenateParagraphs(summary);
+        summary.innerHTML = para.outerHTML;
+
+        const textHeight = summary.firstChild.clientHeight;
+
+        // テキスト要素のline-heightを取得
+        let lineHeight = getComputedStyle(summary.firstChild).getPropertyValue(
+            'line-height'
+        );
+        // [32.4px]のようなピクセル値が返ってくるので、数字だけにする
+        lineHeight = lineHeight.replace(/[^-\d\.]/g, '');
+
+        // メニューが6行以上だったら高さを5行にする
+        if (textHeight > lineHeight * 3) {
+            summary.firstChild.style.height = `${lineHeight * 3}px`;
+        } else {
+            // メニューが5行以下ならMoreボタン非表示
+            moreButton.style.display = 'none';
+            summary.firstChild.classList.remove('partial-text');
+        }
+
+        // Moreボタンを押したら、テキスト要素のis-openクラスを切り替え
+        moreButton.addEventListener('click', (event) => {
+            summary.firstChild.classList.toggle('partial-text');
+            summary.firstChild.classList.toggle('is-open');
+
+            // ボタンのテキストを入れ替え
+            if (event.target.textContent === '全て表示')
+                event.target.textContent = '戻す';
+            else event.target.textContent = '全て表示';
+        });
+    }
+}
+
+function addMoreButtonAfter(summary) {
+    const moreButton = document.createElement('div');
+    moreButton.classList.add('more-button');
+    moreButton.textContent = '全て表示';
+    summary.insertAdjacentElement('afterend', moreButton);
+    return moreButton;
+}
+
+function concatenateParagraphs(summary) {
+    // 複数の<p>を一つの<p>にまとめる
+
+    const para = document.createElement('p');
+    para.classList.add('partial-text');
+    let text = '';
+    for (const p of summary.children) {
+        text += p.innerHTML + '<br>';
+    }
+    para.innerHTML = text;
+    return para;
 }
