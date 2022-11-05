@@ -37,6 +37,9 @@
         // リンク集が余分なdivに囲まれてるから取り除く
         links = navRight.children[2].children[0].children[1].children[0];
         links.insertBefore(opacLink, links.children[1]);
+
+        // カレンダーが下に移動するまでの画面幅を広く設定
+        optimizeResponsive();
     });
 })();
 
@@ -44,4 +47,16 @@
 function insertBackTransLogo() {
     const img = document.querySelector('.logo .img-fluid');
     img.src = chrome.runtime.getURL('images/wadai-logo-trans-complete.png');
+}
+
+// カレンダーが下に移動するまでの画面幅を広く設定
+function optimizeResponsive() {
+    const mainBox = document.getElementById('region-main-box');
+    // rowとかの場所を再調整
+    mainBox.classList.add('row');
+    mainBox.classList.remove('col-12');
+    mainBox.parentNode.classList.remove('row');
+
+    mainBox.children[0].classList.add('col-md-8'); // mycourse section
+    mainBox.children[1].classList.add('col-md-4'); // rightNav section
 }
