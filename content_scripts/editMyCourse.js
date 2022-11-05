@@ -34,9 +34,9 @@ function makeDisapperedCourseList() {
 function removeDisplayOffCourses() {
     chrome.storage.sync.get(['removedCourses'], (items) => {
         removedCourses = items.removedCourses;
-        console.log(
-            'courseids of removedCourses from Storage -> ' + removedCourses
-        );
+        // console.log(
+        //     'courseids of removedCourses from Storage -> ' + removedCourses
+        // );
 
         if (!removedCourses) {
             removedCourses = [];
@@ -163,7 +163,7 @@ function saveCourseOrder() {
     }
 
     chrome.storage.sync.set({ courseOrder: order }, () => {
-        console.log('saveCourseOrder() : courseOrder -> ' + order);
+        // console.log('saveCourseOrder() : courseOrder -> ' + order);
     });
 }
 
