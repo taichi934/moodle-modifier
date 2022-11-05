@@ -212,7 +212,7 @@ function moveCourseTo(course, des) {
 function saveCourseid(course) {
     removedCourses.push(course.dataset.courseid);
     chrome.storage.sync.set({ removedCourses: removedCourses }, () => {
-        console.log('saveCourseid() : removedCourseid -> ' + removedCourses);
+        // console.log('saveCourseid() : removedCourseid -> ' + removedCourses);
     });
 }
 
@@ -295,10 +295,10 @@ function removeIdFromStorage(id) {
         chrome.storage.sync.set({ removedCourses: newRemovedCourses }, () => {
             chrome.storage.sync.get(['removedCourses'], (items) => {
                 removedCourses = items.removedCourses;
-                console.log(
-                    'removeIdFromStorage() : newRemovedCourses -> ' +
-                        removedCourses
-                );
+                // console.log(
+                //     'removeIdFromStorage() : newRemovedCourses -> ' +
+                //         removedCourses
+                // );
             });
         });
     });
