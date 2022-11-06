@@ -1,9 +1,10 @@
 let isDarkMode;
 
 // 初めに背景透過の写真にすることでダークモード時のちらつきをなくせる
-export function insertBackTransLogo() {
+export function insertBackTransLogo(image) {
     const img = document.querySelector('.logo .img-fluid');
-    img.src = chrome.runtime.getURL('src/images/wadai-logo-trans-complete.png');
+    img.src = image;
+    // img.src = chrome.runtime.getURL('src/images/wadai-logo-trans-complete.png');
 }
 
 export function switchLogoWhenDarkModeChanges() {
