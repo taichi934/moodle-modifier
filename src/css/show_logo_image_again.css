@@ -1,0 +1,7 @@
+mr-auto .logo img {
+  display: block !important;
+}
+/* 左下のお知らせコーナーの写真も */
+p a > img {
+  display: block !important;
+}

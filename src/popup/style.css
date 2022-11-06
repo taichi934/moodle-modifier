@@ -1,0 +1,78 @@
+:root {
+    --backgroundColor: #fff;
+    --color: #000;
+    --mode-font-color: rgba(143, 132, 132, 0.5);
+}
+:root.dark {
+    --backgroundColor: #161b22;
+    --color: #c9d1d9;
+    --mode-font-color: #fff;
+}
+
+.main-container {
+    padding: 0rem 2rem;
+}
+
+body {
+    background-color: var(--backgroundColor);
+    color: var(--color);
+    transition: 0.6s;
+    font-weight: bold;
+}
+p {
+    font-size: 13px;
+}
+a {
+    color: #0f6fc5;
+    text-decoration: none;
+}
+
+input {
+    display: none;
+}
+.color-theme {
+    width: 200px;
+    height: 50px;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    float: right;
+}
+span h2#mode-text {
+    float: left;
+    margin-top: 0px;
+    margin-right: 5px;
+    color: var(--mode-font-color);
+    transition: 0.5s ease-in-out;
+}
+label {
+    width: 60px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 3px solid;
+    position: relative;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    float: right;
+}
+input[type='checkbox']:checked + label {
+    background: #55e868;
+}
+input[type='checkbox']:checked + label:before {
+    left: 30px;
+}
+label:before {
+    transition: 0.4s ease;
+    content: '';
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    background: white;
+    left: 1.2px;
+    top: 1.2px;
+    color: black;
+    box-sizing: border-box;
+    border: 3px solid;
+    border-radius: 50px;
+}
