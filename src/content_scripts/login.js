@@ -1,4 +1,22 @@
+import {
+    initialDarkModeCheck,
+    listenDarkModeChange,
+} from './modules/checkDarkMode.js';
+
+function everythingHidden() {
+    const body = document.querySelector('body');
+    for (const el of Array.from(body.children)) {
+        if ('script' in el) continue;
+        el.style.display = 'none';
+    }
+}
+
 (() => {
+    // Color Theme
+    initialDarkModeCheck();
+    listenDarkModeChange();
+
+    // login process
     window.addEventListener('DOMContentLoaded', () => {
         // if you login for the first time, you need to login by <your college> id manually
 
@@ -15,11 +33,3 @@
         location.assign(url);
     });
 })();
-
-function everythingHidden() {
-    const body = document.querySelector('body');
-    for (const el of Array.from(body.children)) {
-        if ('script' in el) continue;
-        el.style.display = 'none';
-    }
-}

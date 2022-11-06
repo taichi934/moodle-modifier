@@ -108,16 +108,16 @@ p.is-open {
 }
 .more-button {
     color: var(--readmoreBtnColor);
-    width: 70px;
-    padding: 3px 0;
-    border-radius: var(--radius);
     line-height: 16px;
     font-size: 14px;
     /* font-weight: 550; */
     text-align: center;
 
+    width: 130px;
+    padding: 15px 30px;
+
     margin-left: auto;
-    transform: translateY(-1.2rem);
+    transform: translateY(-1.5rem);
 }
 
 /* お知らせコーナー */

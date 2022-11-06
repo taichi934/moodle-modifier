@@ -1,17 +1,3 @@
-(() => {
-    window.addEventListener('DOMContentLoaded', () => {
-        // await deleteRemovedCoursesInStorage();
-
-        makeDisapperedCourseList();
-        removeDisplayOffCourses();
-        addEditMode();
-        addDisplayOnOffButton();
-        addCourseListToggleButton();
-
-        abbrebiateSummary();
-    });
-})();
-
 let removedCourses = [];
 
 // デバッグ時にstorageを全消去する用
@@ -19,7 +5,7 @@ let removedCourses = [];
 //     await chrome.storage.sync.clear();
 // }
 
-function makeDisapperedCourseList() {
+export function makeDisapperedCourseList() {
     const disappearedCourseList = document.createElement('div');
     disappearedCourseList.id = 'display-off-course-list';
     disappearedCourseList.innerHTML =
@@ -31,7 +17,7 @@ function makeDisapperedCourseList() {
     myCourse.insertAdjacentElement('afterend', disappearedCourseList);
 }
 
-function removeDisplayOffCourses() {
+export function removeDisplayOffCourses() {
     chrome.storage.sync.get(['removedCourses'], (items) => {
         removedCourses = items.removedCourses;
         // console.log(
@@ -78,7 +64,7 @@ function remapOddEven() {
     }
 }
 
-function addEditMode() {
+export function addEditMode() {
     // マイコース用
     const editBtn = document.createElement('button');
     editBtn.classList.add('edit-btn', 'btn');
@@ -129,7 +115,7 @@ function toggleDraggable(event) {
 
     const isEditMode = courses[0].draggable;
 
-    for (const course of Array.from(courses)) {
+    for (const course of courses) {
         if (course.draggable) {
             // 編集モードを抜ける
             course.setAttribute('draggable', 'false');
@@ -167,7 +153,7 @@ function saveCourseOrder() {
     });
 }
 
-function addDisplayOnOffButton() {
+export function addDisplayOnOffButton() {
     const myCourseList = document.getElementById('frontpage-course-list');
     const disappearedCourseList = document.getElementById(
         'display-off-course-list'
@@ -217,7 +203,7 @@ function saveCourseid(course) {
 }
 
 // マイコースと非表示にしたコースリストの切り替え
-function addCourseListToggleButton() {
+export function addCourseListToggleButton() {
     const btn = document.createElement('button');
     btn.className = 'course-list-toggle-btn btn';
     btn.setAttribute('type', 'button');
@@ -305,7 +291,7 @@ function removeIdFromStorage(id) {
 }
 
 // summary.firstChildを置き換える
-function abbrebiateSummary() {
+export function abbrebiateSummary() {
     const summarries = document.querySelectorAll('.summary .no-overflow');
 
     for (const summary of Array.from(summarries)) {
