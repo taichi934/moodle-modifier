@@ -1,10 +1,17 @@
-import { initialDarkModeCheck, listenDarkModeChange } from './checkDarkMode.js';
-import { checkLogin, changeLayout, optimizeResponsive } from './layout.js';
-import { showCalendar } from './calendar.js';
+import {
+    initialDarkModeCheck,
+    listenDarkModeChange,
+} from './modules/checkDarkMode.js';
+import {
+    checkLogin,
+    changeLayout,
+    optimizeResponsive,
+} from './modules/layout.js';
+import { showCalendar } from './modules/calendar.js';
 import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
-} from './switchLogo.js';
+} from './modules/switchLogo.js';
 
 (() => {
     initialDarkModeCheck();
@@ -18,6 +25,6 @@ import {
 
         showCalendar();
 
-        // switchLogoWhenDarkModeChanges();
+        switchLogoWhenDarkModeChanges();
     });
 })();

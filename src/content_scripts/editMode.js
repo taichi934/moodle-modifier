@@ -5,8 +5,8 @@ import {
     addDisplayOnOffButton,
     addCourseListToggleButton,
     abbrebiateSummary,
-} from './editMyCourse.js';
-import { sortCourses, setCoursesDraggable } from './reorderCourses.js';
+} from './modules/editMyCourse.js';
+import { sortCourses, setCoursesDraggable } from './modules/reorderCourses.js';
 
 (() => {
     window.addEventListener('DOMContentLoaded', () => {

@@ -1,4 +1,7 @@
-import { initialDarkModeCheck, listenDarkModeChange } from './checkDarkMode.js';
+import {
+    initialDarkModeCheck,
+    listenDarkModeChange,
+} from './modules/checkDarkMode.js';
 
 function everythingHidden() {
     const body = document.querySelector('body');
