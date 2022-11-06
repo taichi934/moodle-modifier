@@ -1,14 +1,3 @@
-// (() => {
-//     window.addEventListener('DOMContentLoaded', () => {
-//         // 自動ログイン
-//         const loginLink = document.querySelector('.login');
-//         // ログイン済みの場合に動作
-//         if (loginLink == null) {
-//             main();
-//         }
-//     });
-// })();
-
 export function showCalendar() {
     // iframeでカレンダーページを読み取り
     const calendarPage = document.createElement('iframe');

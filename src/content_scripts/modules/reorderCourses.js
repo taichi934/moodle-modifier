@@ -1,17 +1,10 @@
-// (() => {
-//     window.addEventListener('DOMContentLoaded', () => {
-//         sortCourses();
-//         setCoursesDraggable();
-//     });
-// })();
-
 // storageからコースの並びを取得して、その順番に並び変える
 export function sortCourses() {
     let order = [];
     chrome.storage.sync.get(['courseOrder'], (items) => {
         if (!items.courseOrder) return;
         order = items.courseOrder;
-        console.log('course order -> ' + order);
+        // console.log('course order -> ' + order);
 
         // frontpage-course-listのコースだけ
         const courses = document.getElementsByClassName('courses')[0];
@@ -35,7 +28,7 @@ export function sortCourses() {
 export function setCoursesDraggable() {
     const courses = document.getElementsByClassName('coursebox');
 
-    for (const course of Array.from(courses)) {
+    for (const course of courses) {
         // course.setAttribute('draggable', 'true');
 
         course.ondragstart = onDragStart;

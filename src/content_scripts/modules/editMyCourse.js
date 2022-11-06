@@ -1,17 +1,3 @@
-// (() => {
-//     window.addEventListener('DOMContentLoaded', () => {
-//         // await deleteRemovedCoursesInStorage();
-
-// makeDisapperedCourseList();
-// removeDisplayOffCourses();
-// addEditMode();
-// addDisplayOnOffButton();
-// addCourseListToggleButton();
-
-// abbrebiateSummary();
-//     });
-// })();
-
 let removedCourses = [];
 
 // デバッグ時にstorageを全消去する用
@@ -129,7 +115,7 @@ function toggleDraggable(event) {
 
     const isEditMode = courses[0].draggable;
 
-    for (const course of Array.from(courses)) {
+    for (const course of courses) {
         if (course.draggable) {
             // 編集モードを抜ける
             course.setAttribute('draggable', 'false');
