@@ -1,7 +1,7 @@
 {
     "scripts": {
         "build": "webpack --mode development --stats-error-details",
-        "watch": "webpack --watch",
+        "watch": "webpack --mode development --watch",
         "publish": "webpack --mode production && node zip.js $1"
     },
     "devDependencies": {
