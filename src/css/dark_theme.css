@@ -77,6 +77,52 @@ section .odd {
     transition: 0.4s;
 }
 
+/* 編集時にコースをゆらす */
+.coursebox[draggable='true'].odd {
+    animation: tremble1 1.1s infinite;
+}
+/* なぜか効かない */
+/* .coursebox.odd[draggable='true']:nth-child(even) {
+    animation: tremble2 0.9s infinite;
+} */
+@keyframes tremble1 {
+    0% {
+        transform: translate(0px, 0px) rotateZ(0deg);
+    }
+    25% {
+        transform: translate(2px, 2px) rotateZ(1deg);
+    }
+    50% {
+        transform: translate(0px, 2px) rotateZ(0deg);
+    }
+    75% {
+        transform: translate(2px, 0px) rotateZ(-1deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotateZ(0deg);
+    }
+}
+.coursebox[draggable='true'].even {
+    animation: tremble2 0.9s infinite;
+}
+@keyframes tremble2 {
+    0% {
+        transform: translate(0px, 0px) rotateZ(0deg);
+    }
+    25% {
+        transform: translate(2px, 2px) rotateZ(-1deg);
+    }
+    50% {
+        transform: translate(0px, 2px) rotateZ(0deg);
+    }
+    75% {
+        transform: translate(2px, 0px) rotateZ(1deg);
+    }
+    100% {
+        transform: translate(0px, 0px) rotateZ(0deg);
+    }
+}
+
 /* コースの検索爛とボタンの色 */
 #shortsearchbox,
 #coursesearchbox,
