@@ -291,7 +291,7 @@ function removeIdFromStorage(id) {
 }
 
 // summary.firstChildを置き換える
-export function abbrebiateSummary() {
+export function abbreviateSummary() {
     const summarries = document.querySelectorAll('.summary .no-overflow');
 
     for (const summary of Array.from(summarries)) {

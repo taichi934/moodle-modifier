@@ -4,7 +4,7 @@ import {
     addEditMode,
     addDisplayOnOffButton,
     addCourseListToggleButton,
-    abbrebiateSummary,
+    abbreviateSummary,
 } from './modules/editMyCourse.js';
 import { sortCourses, setCoursesDraggable } from './modules/reorderCourses.js';
 
@@ -18,7 +18,7 @@ import { sortCourses, setCoursesDraggable } from './modules/reorderCourses.js';
         addCourseListToggleButton();
 
         //　コースサマリーを省略
-        abbrebiateSummary();
+        abbreviateSummary();
 
         // コースの並び替え
         sortCourses();
