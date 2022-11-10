@@ -169,7 +169,7 @@ p img {
     background-color: #e4f1f4;
 }
 /* バグ修正 水色の背景の部分*/
-.current {
+.course-content .current {
     color: #212529;
 }
 
