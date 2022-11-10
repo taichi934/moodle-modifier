@@ -35,7 +35,11 @@ body {
 /* リンクの色を見やすい水色に */
 header#page-header a,
 div#page-content a {
-    color: var(--linkColor) !important;
+    color: var(--linkColor);
+}
+/* バグ修正 */
+#page-content a.btn-primary {
+    color: #fff;
 }
 
 /* navbar */
@@ -160,6 +164,15 @@ p img {
     border-radius: var(--radius);
 }
 
+/* バグ修正 水色の背景の部分*/
+#region-main .course-content .current ul.section li.activity {
+    background-color: #e4f1f4;
+}
+/* バグ修正 水色の背景の部分*/
+.current {
+    color: #212529;
+}
+
 .dark .course-content ul li.section.main {
     /* border-bottom-color: var(--borderColor); */
     border-color: var(--borderColor);
@@ -195,9 +208,27 @@ table.generaltable,
     border-color: var(--borderColor) !important;
 }
 
+/* バグ修正 　予定表　*/
+tr[bgcolor='#dddddd'] th {
+    color: #212529;
+}
+
 /* 提出に関する日付 */
 .dark b {
     color: #fff;
+}
+
+/* バグ修正 ダークモード限定 */
+/* 注記 */
+.dark span[style='background-color: #ffff00; font-size: small;'],
+.dark span[style='background-color: #ffff00; font-size: large;'] {
+    color: var(--headerBackgroundColor);
+}
+
+/* バグ修正 ダークモード限定 */
+/* ファイルの詳細（容量，アップロード日） */
+.dark .resourcelinkdetails {
+    color: #999;
 }
 
 /* ダッシュボードのページ */
