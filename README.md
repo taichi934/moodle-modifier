@@ -1,7 +1,7 @@
 # moodle modifier
 
 This is a web extension which supports chromium based browsers; there is also firefox version but it has not published yet.
-moodle modifier offers you a few features to make moodle a little better for daily use.
+moodle modifier offers you a lot of features to make moodle a little better for daily use.
 
 # What is this for ?
 
@@ -11,8 +11,8 @@ moodle modifier offers you a few features to make moodle a little better for dai
 - Add a link to the library of your school into Links
 - Turn github-like dark mode on and off from the extension popup
 - Add calendar that shows reports' deadlines in top page.
+- Hide chosen courses you don't access anymore. 
 
 # What comes next ?
-
-Any idea?
+Any other idea?
 Please tell me some features you want by issues

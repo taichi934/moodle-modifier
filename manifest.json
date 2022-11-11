@@ -1,69 +1,63 @@
 {
-  "manifest_version": 3,
-  "name": "moodle modifier",
-  "description": "Login automatically, change the layout of Moodle, and support dark mode",
-  "version": "1.4.2",
+    "manifest_version": 3,
+    "name": "moodle modifier",
+    "description": "便利な機能を詰め込んだ moodle 用の拡張機能；自動ログイン、提出物が記載されたカレンダーの追加、必要のない講義の非表示、ダークモード対応、講義の並び替えなど",
+    "version": "1.6.5",
 
-  "icons": {
-    "48": "images/MoodleModifier-logo-icon48.png",
-    "128": "images/MoodleModifier-logo-icon128.png"
-  },
-
-  "content_scripts": [
-    {
-      "exclude_matches": [
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-      ],
-      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
-      "run_at": "document_start",
-      "css": [
-        "content_scripts/css/dark_theme.css",
-        "content_scripts/css/calendar.css"
-      ],
-      "js": [
-        "content_scripts/checkDarkMode.js",
-        "content_scripts/switchLogo.js",
-        "content_scripts/re-layout.js",
-        "content_scripts/addCalendar.js"
-      ]
+    "icons": {
+        "48": "src/images/MoodleModifier-logo-icon48.png",
+        "128": "src/images/MoodleModifier-logo-icon128.png"
     },
-    {
-      "exclude_matches": [
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-      ],
-      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
-      "run_at": "document_end",
-      "css": ["content_scripts/css/show_logo_image_again.css"]
+
+    "content_scripts": [
+        {
+            "exclude_matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+            ],
+            "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
+            "css": ["src/css/dark_theme.css"],
+            "js": ["dist/main.bundle.js"],
+            "run_at": "document_start"
+        },
+        {
+            "exclude_matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+            ],
+            "matches": ["*://moodle2022.wakayama-u.ac.jp/2022/"],
+            "css": [
+                "src/css/calendar.css",
+                "src/css/show_logo_image_again.css",
+                "src/css/edit_btn.css"
+            ],
+            "js": ["dist/editMode.bundle.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+            ],
+            "css": ["src/css/dark_theme_login.css"],
+            "js": ["dist/login.bundle.js"],
+            "run_at": "document_start"
+        }
+    ],
+
+    "permissions": ["storage"],
+    "host_permissions": ["*://moodle2022.wakayama-u.ac.jp/*"],
+
+    "action": {
+        "default_icon": "src/images/MoodleModifier-logo-icon128.png",
+        "default_title": "moodle modifier",
+        "default_popup": "src/popup/advatise_something.html"
     },
-    {
-      "matches": [
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-        "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-      ],
-      "run_at": "document_start",
-      "css": ["content_scripts/css/dark_theme_login.css"],
-      "js": [
-        "content_scripts/checkDarkMode.js",
-        "content_scripts/loginByCollegeID.js"
-      ]
-    }
-  ],
 
-  "permissions": ["storage"],
-  "host_permissions": ["*://moodle2022.wakayama-u.ac.jp/*"],
-
-  "action": {
-    "default_icon": "images/MoodleModifier-logo-icon128.png",
-    "default_title": "moodle modifier",
-    "default_popup": "popup/advatise_something.html"
-  },
-
-  "web_accessible_resources": [
-    {
-      "resources": ["images/*"],
-      "matches": ["*://moodle2022.wakayama-u.ac.jp/*"]
-    }
-  ]
+    "web_accessible_resources": [
+        {
+            "resources": ["src/images/*"],
+            "matches": ["*://moodle2022.wakayama-u.ac.jp/*"]
+        }
+    ]
 }

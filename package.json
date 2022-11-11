@@ -1,0 +1,12 @@
+{
+    "scripts": {
+        "build": "webpack --mode development --stats-error-details",
+        "watch": "webpack --watch",
+        "publish": "webpack --mode production && node zip.js $1"
+    },
+    "devDependencies": {
+        "bestzip": "^2.2.1",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0"
+    }
+}
