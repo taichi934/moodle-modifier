@@ -12,6 +12,7 @@ import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
 } from './modules/switchLogo.js';
+import { addWordCounter } from './modules/wordCount.ts';
 
 (() => {
     initialDarkModeCheck();
@@ -26,5 +27,7 @@ import {
         showCalendar();
 
         switchLogoWhenDarkModeChanges();
+
+        addWordCounter(); // アンケート系のテキストエディタに文字数カウントを追加
     });
 })();
