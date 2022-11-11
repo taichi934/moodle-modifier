@@ -231,6 +231,14 @@ tr[bgcolor='#dddddd'] th {
     color: #999;
 }
 
+/* バグ修正　アンケート　ダークモード限定
+/* アンケート番号 */
+/* アンケート文 */
+.dark .mod_questionnaire_completepage .qn-info .qn-number,
+.dark .mod_questionnaire_completepage .qn-content {
+    color: var(--backgroundColor);
+}
+
 /* ダッシュボードのページ */
 .dark #region-main section.card {
     background-color: var(--backgroundColor) !important;
