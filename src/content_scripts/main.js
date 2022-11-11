@@ -15,11 +15,15 @@ import {
 import { addWordCounter } from './modules/wordCount.ts';
 
 (() => {
+    const transLogo = chrome.runtime.getURL(
+        'src/images/wadai-logo-trans-complete.png'
+    );
+
     initialDarkModeCheck();
     listenDarkModeChange();
 
     window.addEventListener('DOMContentLoaded', () => {
-        insertBackTransLogo(); // 画像のちらつきを防げる
+        insertBackTransLogo(transLogo); // 画像のちらつきを防げる
         checkLogin();
         changeLayout();
         optimizeResponsive(); // カレンダーが下に移動するまでの画面幅を広く設定
