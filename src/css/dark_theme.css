@@ -262,6 +262,13 @@ table.generaltable,
     color: #fff;
 }
 
+/* オンラインエディタの文字数カウンタ */
+.word-count {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    color: #000;
+}
+
 /* ダッシュボードのページ */
 .dark #region-main section.card {
     background-color: var(--backgroundColor) !important;

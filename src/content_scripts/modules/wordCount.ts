@@ -1,5 +1,3 @@
-// https://moodle2022.wakayama-u.ac.jp/2022/mod/questionnaire/complete.php?
-
 export function addWordCounter(): void {
     // add DOM
     addWordCounterToDOM();
