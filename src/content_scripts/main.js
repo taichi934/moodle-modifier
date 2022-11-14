@@ -8,6 +8,7 @@ import {
     optimizeResponsive,
 } from './modules/layout.js';
 import { showCalendar } from './modules/calendar.js';
+import { changeFormat } from './modules/formatCalendar.ts';
 import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
@@ -30,5 +31,8 @@ import {
         showCalendar();
 
         switchLogoWhenDarkModeChanges();
+    });
+    window.addEventListener('load', () => {
+        changeFormat();
     });
 })();
