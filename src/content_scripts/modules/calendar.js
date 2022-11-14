@@ -44,15 +44,3 @@ function getUnixTimestamp() {
     const timestamp = Unixtime.getTime() / 1000; // 単位がmsだから1000で割る
     return timestamp;
 }
-
-function changeFormat(calendar) {
-    const table = calendar.lastChild;
-    const weeks = table.children[0].children[0]; // <tr>の配列
-    weeks.insertBefore(weeks.lastChild, weeks.firstChild); // 曜日を入れ替え
-
-    // 1日が月から土までの間だったら，1行目の先頭にからの日にち（&nbsp;）を追加し，
-    // 日曜の列を2行目から追加
-
-    // 1日が日曜日だったら，日曜の列を2行目から追加し，
-    // 何も無くなった1行目を削除
-}
