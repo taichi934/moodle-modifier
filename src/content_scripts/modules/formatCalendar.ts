@@ -43,12 +43,12 @@ export function changeFormat(): void {
     }
 }
 
-function changeWeekFormat() {
+function changeWeekFormat(): void {
     const weeks = document.querySelector<HTMLTableRowElement>('thead > tr');
     weeks?.insertBefore(weeks.lastElementChild!, weeks.firstElementChild);
 }
 
-function appendRow() {
+function appendRow(): void {
     const endRow = document.querySelector('table')?.insertRow();
     endRow!.innerHTML = `<td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td>`;
 }
@@ -67,7 +67,7 @@ function removeLastCell(row: HTMLTableRowElement): void {
 }
 
 // 最終日の曜日を取得
-function getEndDay() {
+function getEndDay(): number {
     const d = new Date();
     const year = d.getFullYear();
     const month = d.getMonth(); // 月だけ0ベース
