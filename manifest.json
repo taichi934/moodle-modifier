@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "moodle modifier",
     "description": "便利な機能を詰め込んだ moodle 用の拡張機能；自動ログイン、提出物が記載されたカレンダーの追加、必要のない講義の非表示、ダークモード対応、講義の並び替えなど",
-    "version": "1.7.0",
+    "version": "1.7.1",
 
     "icons": {
         "48": "src/images/MoodleModifier-logo-icon48.png",
