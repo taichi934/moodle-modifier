@@ -1,4 +1,5 @@
 {
+    "name": "moodle-modifier",
     "scripts": {
         "build": "webpack --mode development --stats-error-details",
         "watch": "webpack --mode development --watch",
