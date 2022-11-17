@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "moodle2022.wakayama-u.ac.jp/2022/*^wadai-logo.png",
+            "resourceTypes": ["image"]
+        }
+    }
+]
