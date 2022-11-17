@@ -8,6 +8,7 @@ import {
     optimizeResponsive,
 } from './modules/layout.js';
 import { showCalendar } from './modules/calendar.js';
+import { changeFormat } from './modules/formatCalendar.ts';
 import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
@@ -35,5 +36,7 @@ import { addWordCounter } from './modules/wordCount.ts';
     window.addEventListener('load', () => {
         // オンラインエディタは読み込み完了が遅いため
         addWordCounter(); // アンケート系のテキストエディタに文字数カウントを追加
+
+        changeFormat();
     });
 })();
