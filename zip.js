@@ -11,6 +11,7 @@ zip({
         'src/css/*',
         'src/images/*',
         'src/popup/*',
+        'rules.json',
     ],
     destination,
 });
