@@ -12,7 +12,7 @@ import { changeFormat } from './modules/formatCalendar';
 import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
-} from './modules/switchLogo.js';
+} from './modules/switchLogo';
 import { addWordCounter } from './modules/wordCount';
 
 (() => {
