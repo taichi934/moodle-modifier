@@ -1,19 +1,19 @@
 import {
     initialDarkModeCheck,
     listenDarkModeChange,
-} from './modules/checkDarkMode.js';
+} from './modules/checkDarkMode';
 import {
     checkLogin,
     changeLayout,
     optimizeResponsive,
 } from './modules/layout.js';
 import { showCalendar } from './modules/calendar.js';
-import { changeFormat } from './modules/formatCalendar.ts';
+import { changeFormat } from './modules/formatCalendar';
 import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
-} from './modules/switchLogo.js';
-import { addWordCounter } from './modules/wordCount.ts';
+} from './modules/switchLogo';
+import { addWordCounter } from './modules/wordCount';
 
 (() => {
     const transLogo = chrome.runtime.getURL(
