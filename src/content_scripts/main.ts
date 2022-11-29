@@ -1,7 +1,7 @@
 import {
     initialDarkModeCheck,
     listenDarkModeChange,
-} from './modules/checkDarkMode.js';
+} from './modules/checkDarkMode';
 import {
     checkLogin,
     changeLayout,
