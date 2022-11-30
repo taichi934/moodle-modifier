@@ -280,11 +280,40 @@ tr[bgcolor='#dddddd'] th {
     color: #fff;
 }
 
+/* オンラインエディタ */
+.dark .editor_atto_toolbar {
+    background-color: var(--headerBackgroundColor);
+    border: 1px solid var(--borderColor);
+}
+.dark .editor_atto_toolbar .atto_group {
+    border: 1px solid var(--borderColor);
+    border-bottom: 1px solid var(--borderColor);
+}
+.dark .editor_atto_toolbar button + button {
+    border-left: 1px solid var(--borderColor);
+}
+.dark .editor_atto_toolbar button,
+.dark .editor_atto_toolbar i {
+    background-color: var(--backgroundColor);
+    color: var(--color);
+}
+.dark .editor_atto_content_wrap {
+    background-color: var(--backgroundColor);
+    border: 1px solid var(--borderColor);
+    color: var(--color);
+}
+/* .dark .editor_atto_content_wrap {
+    outline: solid 1px var(--linkColor);
+} */
+
 /* オンラインエディタの文字数カウンタ */
 .word-count {
     margin-top: 0.5rem;
     margin-left: 1rem;
     color: #000;
+}
+.dark .word-count {
+    color: var(--color);
 }
 
 /* バグ修正 ダークモード限定 */
