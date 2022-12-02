@@ -1,9 +1,9 @@
 export function changeFormat(): void {
     changeWeekFormat();
 
-    // 最終日が土曜日の場合，行を追加
+    // 最終日が日曜日の場合，行を追加
     const endDay = getEndDay();
-    if (endDay === 6) {
+    if (endDay === 0) {
         appendRow();
     }
 
@@ -19,6 +19,7 @@ export function changeFormat(): void {
         } else {
             sun = rows[i]!.children[7] as HTMLTableCellElement;
         }
+        // i===row.length-1の時は次の行がないので実行されない
         rows[i + 1]?.insertBefore(sun, rows[i + 1]?.firstElementChild!);
     }
 
@@ -36,11 +37,8 @@ export function changeFormat(): void {
         rows[1]!.insertBefore(emptyDate, rows[1]?.firstElementChild!);
     }
 
-    if (endDay === 6) {
-        removeLastCell(rows[rows.length - 2]!);
-    } else {
-        removeLastCell(rows[rows.length - 1]!);
-    }
+    // 最終行が8マスになるから
+    removeLastCell(rows[rows.length - 1]!);
 }
 
 function changeWeekFormat(): void {
@@ -50,9 +48,10 @@ function changeWeekFormat(): void {
 
 function appendRow(): void {
     const endRow = document.querySelector('table')?.insertRow();
-    endRow!.innerHTML = `<td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td>`;
+    endRow!.innerHTML = `<td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td>`;
 }
 
+// 返り値 → 0~6 : 日~土
 function getDay(): number {
     const d = new Date();
     const year = d.getFullYear();
@@ -67,6 +66,7 @@ function removeLastCell(row: HTMLTableRowElement): void {
 }
 
 // 最終日の曜日を取得
+// 返り値 → 0~6 : 日~土
 function getEndDay(): number {
     const d = new Date();
     const year = d.getFullYear();
