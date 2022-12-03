@@ -28,8 +28,7 @@ import {
         changeLayout();
         optimizeResponsive(); // カレンダーが下に移動するまでの画面幅を広く設定
 
-        showCalendar();
-
+        showCalendar(); // 時間がかかるから早めに呼び出す
         switchLogoWhenDarkModeChanges();
     });
     window.addEventListener('load', () => {
