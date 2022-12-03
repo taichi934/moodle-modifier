@@ -7,9 +7,13 @@ module.exports = {
 
     // メインとなるJavaScriptファイル（エントリーポイント）
     entry: {
-        main: path.resolve(__dirname, './src/content_scripts/main.js'),
-        login: path.resolve(__dirname, './src/content_scripts/login.js'),
-        editMode: path.resolve(__dirname, './src/content_scripts/editMode.js'),
+        topPage: path.resolve(__dirname, './src/content_scripts/topPage.ts'),
+        notTopPage: path.resolve(
+            __dirname,
+            './src/content_scripts/notTopPage.ts'
+        ),
+        login: path.resolve(__dirname, './src/content_scripts/login.ts'),
+        editMode: path.resolve(__dirname, './src/content_scripts/editMode.ts'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
