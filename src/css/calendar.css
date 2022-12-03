@@ -73,6 +73,9 @@ div#page-content table.calendarmonth td div a.aalink.day.todaySpan {
 .calendar-table .d-md-block {
     display: block !important;
 }
+.calendar-table .d-none {
+    display: block !important;
+}
 .calendar-table .d-md-none {
     display: none;
 }

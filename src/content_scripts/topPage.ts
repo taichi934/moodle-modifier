@@ -1,19 +1,18 @@
 import {
     initialDarkModeCheck,
     listenDarkModeChange,
-} from './modules/checkDarkMode.js';
+} from './modules/checkDarkMode';
 import {
     checkLogin,
     changeLayout,
     optimizeResponsive,
 } from './modules/layout.js';
 import { showCalendar } from './modules/calendar.js';
-import { changeFormat } from './modules/formatCalendar.ts';
+import { changeFormat } from './modules/formatCalendar';
 import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
-} from './modules/switchLogo.js';
-import { addWordCounter } from './modules/wordCount.ts';
+} from './modules/switchLogo';
 
 (() => {
     const transLogo = chrome.runtime.getURL(
@@ -34,9 +33,6 @@ import { addWordCounter } from './modules/wordCount.ts';
         switchLogoWhenDarkModeChanges();
     });
     window.addEventListener('load', () => {
-        // オンラインエディタは読み込み完了が遅いため
-        addWordCounter(); // アンケート系のテキストエディタに文字数カウントを追加
-
         changeFormat();
     });
 })();
