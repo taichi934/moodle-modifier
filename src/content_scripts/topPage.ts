@@ -2,11 +2,7 @@ import {
     initialDarkModeCheck,
     listenDarkModeChange,
 } from './modules/checkDarkMode';
-import {
-    checkLogin,
-    changeLayout,
-    optimizeResponsive,
-} from './modules/layout.js';
+import { checkLogin, changeLayout, optimizeResponsive } from './modules/layout';
 import { showCalendar } from './modules/calendar';
 import { changeFormat } from './modules/formatCalendar';
 import {
