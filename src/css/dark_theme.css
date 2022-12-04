@@ -298,6 +298,11 @@ tr[bgcolor='#dddddd'] th {
     color: #000;
 }
 
+/* バグ修正 表 ダークモード限定*/
+.dark table {
+    color: var(--color);
+}
+
 /* バグ修正 ダークモード限定 */
 /* 注記 */
 .dark span[style='background-color: #ffff00; font-size: small;'],
