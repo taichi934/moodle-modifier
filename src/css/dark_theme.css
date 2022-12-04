@@ -324,7 +324,7 @@ tr[bgcolor='#dddddd'] th {
     color: var(--backgroundColor);
 }
 
-/* ダッシュボードのページ */
+/* ダッシュボードのページ ++++++++++++++++++++++++++++++++++ */
 .dark #region-main section.card {
     background-color: var(--backgroundColor) !important;
     border-color: var(--borderColor);
@@ -337,4 +337,23 @@ tr[bgcolor='#dddddd'] th {
 .dark #region-main section.card .card .card-footer {
     background-color: var(--headerBackgroundColor) !important;
     border-color: var(--borderColor);
+}
+
+/* ハンバーガーメニューで出てくるリスト */
+#nav-drawer {
+    background-color: var(--headerBackgroundColor);
+}
+/* コース概要 */
+.list-group .list-group-item,
+.block .block-cards .paged-content-page-container .course-summaryitem {
+    background-color: var(--backgroundColor);
+    border-color: var(--borderColor);
+}
+#nav-drawer .list-group .list-group-item:hover {
+    color: var(--color);
+    background-color: #30363d;
+}
+.dark .progress.bg-white {
+    background-color: #30363b !important;
+    border-color: #30363b !important;
 }
