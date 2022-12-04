@@ -67,3 +67,15 @@ div#page-content table.calendarmonth td div a.aalink.day.todaySpan {
     margin-left: 2px;
     padding: 2px 3px;
 }
+
+/* バグ修正　カレンダー
+細くても提出物が表示されるように */
+.calendar-table .d-md-block {
+    display: block !important;
+}
+.calendar-table .d-none {
+    display: block !important;
+}
+.calendar-table .d-md-none {
+    display: none;
+}

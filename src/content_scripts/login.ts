@@ -1,13 +1,15 @@
 import {
     initialDarkModeCheck,
     listenDarkModeChange,
-} from './modules/checkDarkMode.js';
+} from './modules/checkDarkMode';
 
 function everythingHidden() {
     const body = document.querySelector('body');
-    for (const el of Array.from(body.children)) {
-        if ('script' in el) continue;
-        el.style.display = 'none';
+    if (body) {
+        for (const el of Array.from(body.children)) {
+            if ('script' in el) continue;
+            (el as HTMLElement).style.display = 'none';
+        }
     }
 }
 
@@ -24,7 +26,7 @@ function everythingHidden() {
         // this code just do that automatically
         const a = document.getElementsByClassName(
             'btn btn-lg btn-block btn-warning'
-        )[0];
+        )[0] as HTMLAnchorElement;
         const url = a.href;
 
         // 要素を全て非表示にする（ボタンとかがチラつくよりもマシ）
