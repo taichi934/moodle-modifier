@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "moodle modifier",
     "description": "便利な機能を詰め込んだ moodle 用の拡張機能；自動ログイン、提出物が記載されたカレンダーの追加、必要のない講義の非表示、ダークモード対応、講義の並び替え、文字数カウンタの追加など",
-    "version": "1.7.3",
+    "version": "1.7.4",
 
     "icons": {
         "48": "src/images/MoodleModifier-logo-icon48.png",
@@ -11,27 +11,25 @@
 
     "content_scripts": [
         {
-            "exclude_matches": [
-                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-            ],
-            "matches": ["*://moodle2022.wakayama-u.ac.jp/*"],
-            "css": ["src/css/dark_theme.css"],
-            "js": ["dist/main.bundle.js"],
-            "run_at": "document_start"
-        },
-        {
-            "exclude_matches": [
-                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
-            ],
             "matches": ["*://moodle2022.wakayama-u.ac.jp/2022/"],
             "css": [
+                "src/css/dark_theme.css",
                 "src/css/calendar.css",
                 "src/css/show_logo_image_again.css",
                 "src/css/edit_btn.css"
             ],
-            "js": ["dist/editMode.bundle.js"],
+            "js": ["dist/topPage.bundle.js", "dist/editMode.bundle.js"],
+            "run_at": "document_start"
+        },
+        {
+            "exclude_matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/",
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+            ],
+            "matches": ["*://moodle2022.wakayama-u.ac.jp/2022/*"],
+            "css": ["src/css/dark_theme.css"],
+            "js": ["dist/notTopPage.bundle.js"],
             "run_at": "document_start"
         },
         {

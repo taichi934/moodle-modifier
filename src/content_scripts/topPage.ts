@@ -13,7 +13,6 @@ import {
     insertBackTransLogo,
     switchLogoWhenDarkModeChanges,
 } from './modules/switchLogo';
-import { addWordCounter } from './modules/wordCount';
 
 (() => {
     const transLogo = chrome.runtime.getURL(
@@ -34,9 +33,6 @@ import { addWordCounter } from './modules/wordCount';
         switchLogoWhenDarkModeChanges();
     });
     window.addEventListener('load', () => {
-        // オンラインエディタは読み込み完了が遅いため
-        addWordCounter(); // アンケート系のテキストエディタに文字数カウントを追加
-
         changeFormat();
     });
 })();
