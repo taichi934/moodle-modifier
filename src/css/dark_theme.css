@@ -245,6 +245,15 @@ p img {
 .course-content .current {
     color: #212529;
 }
+/* バグ修正 水色の背景の部分*/
+/* .dark #region-main div.content ul.section liが.darkつけてるからこれも.dark付けた */
+.dark #page-course-view-topics .course-content .current ul.section li {
+    background-color: inherit;
+}
+/* バグ修正 水色の背景の部分*/
+.course-content .current table {
+    color: black;
+}
 
 .dark .course-content ul li.section.main {
     /* border-bottom-color: var(--borderColor); */
