@@ -64,7 +64,8 @@ header#page-header > div.col-12.pt-3.pb-3 {
     padding-top: 0.5rem !important;
     padding-bottom: 0.8rem !important;
 }
-#frontpage-course-list {
+#frontpage-course-list,
+#display-off-course-list {
     margin-top: 0.5rem;
 }
 
@@ -244,6 +245,15 @@ p img {
 .course-content .current {
     color: #212529;
 }
+/* バグ修正 水色の背景の部分*/
+/* .dark #region-main div.content ul.section liが.darkつけてるからこれも.dark付けた */
+.dark #page-course-view-topics .course-content .current ul.section li {
+    background-color: inherit;
+}
+/* バグ修正 水色の背景の部分*/
+.course-content .current table {
+    color: black;
+}
 
 .dark .course-content ul li.section.main {
     /* border-bottom-color: var(--borderColor); */
@@ -290,11 +300,49 @@ tr[bgcolor='#dddddd'] th {
     color: #fff;
 }
 
+/* オンラインエディタ */
+.dark .editor_atto_toolbar {
+    background-color: var(--headerBackgroundColor);
+    border: 1px solid var(--borderColor);
+}
+.dark .editor_atto .editor_atto_toolbar .atto_group {
+    background-color: var(--borderColor);
+    border: 1px solid var(--borderColor);
+}
+.dark .editor_atto_toolbar button + button {
+    border-left: 1px solid var(--borderColor);
+}
+.dark .editor_atto_toolbar button,
+.dark .editor_atto_toolbar i {
+    background-color: var(--backgroundColor);
+    color: var(--color);
+}
+.dark .editor_atto_content_wrap {
+    background-color: #010409;
+    color: var(--color);
+}
+
+select.select,
+select.custom-select {
+    background-color: var(--headerBackgroundColor);
+    border-color: var(--borderColor);
+    /* border-radius: var(--radius); */
+    color: var(--color);
+}
+
 /* オンラインエディタの文字数カウンタ */
 .word-count {
     margin-top: 0.5rem;
     margin-left: 1rem;
     color: #000;
+}
+.dark .word-count {
+    color: var(--color);
+}
+
+/* バグ修正 表 ダークモード限定*/
+.dark table {
+    color: var(--color);
 }
 
 /* バグ修正 ダークモード限定 */
@@ -310,15 +358,22 @@ tr[bgcolor='#dddddd'] th {
     color: #999;
 }
 
-/* バグ修正　アンケート　ダークモード限定
+/* バグ修正　アンケート　ダークモード限定 */
 /* アンケート番号 */
 /* アンケート文 */
 .dark .mod_questionnaire_completepage .qn-info .qn-number,
+.dark .mod_questionnaire_reportpage .qn-info .qn-number,
 .dark .mod_questionnaire_completepage .qn-content {
     color: var(--backgroundColor);
 }
+/* アンケート文 */
+.dark .qn-content .qn-question {
+    background-color: #13233a;
+    color: var(--color);
+    border: 2px solid #183256;
+}
 
-/* ダッシュボードのページ */
+/* ダッシュボードのページ ++++++++++++++++++++++++++++++++++ */
 .dark #region-main section.card {
     background-color: var(--backgroundColor) !important;
     border-color: var(--borderColor);
@@ -331,4 +386,23 @@ tr[bgcolor='#dddddd'] th {
 .dark #region-main section.card .card .card-footer {
     background-color: var(--headerBackgroundColor) !important;
     border-color: var(--borderColor);
+}
+
+/* ハンバーガーメニューで出てくるリスト */
+#nav-drawer {
+    background-color: var(--headerBackgroundColor);
+}
+/* コース概要 */
+.list-group .list-group-item,
+.block .block-cards .paged-content-page-container .course-summaryitem {
+    background-color: var(--backgroundColor);
+    border-color: var(--borderColor);
+}
+#nav-drawer .list-group .list-group-item:hover {
+    color: var(--color);
+    background-color: #30363d;
+}
+.dark .progress.bg-white {
+    background-color: #30363b !important;
+    border-color: #30363b !important;
 }
