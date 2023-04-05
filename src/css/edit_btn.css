@@ -19,12 +19,9 @@
 }
 
 .coursebox {
-    position: relative;
     padding: 2rem;
 }
-.coursebox > .info {
-    top: 16px;
-}
+
 .display-off {
     display: none;
     position: absolute;
@@ -57,11 +54,12 @@
     }
 }
 
-.coursebox > div {
+.coursebox > div.info {
     display: inline-block;
 }
 
-.coursebox > .info.edit-mode {
+.coursebox > .info.edit-mode,
+.coursebox > .content > .teachers.edit-mode {
     animation: slide 0.4s ease-out forwards;
     /* forwardsはアニメーション完了時にその場にとどまる */
 }

@@ -105,7 +105,13 @@ function showDisplayOnOffButton(event) {
         el.classList.toggle('edit-mode');
     }
     const titles = document.querySelectorAll('.coursebox > .info');
+    const teacherLists = document.querySelectorAll(
+        '.coursebox > .content > .teachers'
+    );
     for (const el of titles) {
+        el.classList.toggle('edit-mode'); // cssで要素の位置をずらしてる
+    }
+    for (const el of teacherLists) {
         el.classList.toggle('edit-mode'); // cssで要素の位置をずらしてる
     }
 }
@@ -226,22 +232,27 @@ export function addCourseListToggleButton() {
             event.target.textContent = '非表示のコースリスト';
         }
 
-        const courses = document.getElementsByClassName('coursebox');
-        Array.from(courses).forEach((c) => {
-            c.style.display = 'block';
-            // コースリストを切り替えるときは編集モードをオフ
-            c.children[1].classList.remove('edit-mode');
-        });
-
-        // 編集中にリストを切り替えたとき用
-        const editBtns = document.getElementsByClassName('edit-btn');
-        for (const el of editBtns) {
-            el.textContent = '編集';
-        }
+        // コースリストを切り替えるときは編集モードをオフ
         const btns = document.getElementsByClassName('display-off');
         // if (btns[0].classList === 'edit-mode')
         for (const el of btns) {
             el.classList.remove('edit-mode');
+        }
+
+        const courses = document.getElementsByClassName('coursebox');
+        Array.from(courses).forEach((c) => {
+            c.style.display = 'block';
+            c.children[1].classList.remove('edit-mode');
+        });
+        // 教員リストの位置を戻す
+        const teacherLists = document.getElementsByClassName('teachers');
+        for (const el of teacherLists) {
+            el.classList.remove('edit-mode');
+        }
+
+        const editBtns = document.getElementsByClassName('edit-btn');
+        for (const el of editBtns) {
+            el.textContent = '編集';
         }
     }
     btn.addEventListener('click', (event) => {

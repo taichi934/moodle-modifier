@@ -32,20 +32,24 @@ export function changeLayout(): void {
     navRight.insertBefore(header, navRight.children[1]);
 
     // リンク集を上に
-    let links = navRight.children[8];
-    const myCourses = navRight.children[2];
+    // let links = navRight.children[8];
+    let links = navRight.children[5];
+    // 2022年度版ではリンクじゃない場所に挿入されるから、確認してから挿入
+    if (links?.children[0]?.children[0]?.innerHTML === 'リンク') {
+        const myCourses = navRight.children[2]; // header画像がchildren[1]
 
-    if (links && myCourses) {
-        navRight.insertBefore(links, myCourses);
+        if (links && myCourses) {
+            navRight.insertBefore(links, myCourses);
+        }
+
+        // リンク集の中に図書館OPACへのリンクを教育サポートシステムの下に配置
+        const opacLink = document.createElement('p');
+        opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/?lang=0" target="_blank">和歌山大学図書館OPAC</a>`;
+
+        // リンク集が余分なdivに囲まれてるから取り除く
+        links = navRight.children[2]?.children[0]?.children[1]?.children[0];
+        links?.insertBefore(opacLink, links.children[1]!);
     }
-
-    // リンク集の中に図書館OPACへのリンクを教育サポートシステムの下に配置
-    const opacLink = document.createElement('p');
-    opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/?lang=0" target="_blank">和歌山大学図書館OPAC</a>`;
-
-    // リンク集が余分なdivに囲まれてるから取り除く
-    links = navRight.children[2]?.children[0]?.children[1]?.children[0];
-    links?.insertBefore(opacLink, links.children[1]!);
 }
 
 // カレンダーが下に移動するまでの画面幅を広く設定
