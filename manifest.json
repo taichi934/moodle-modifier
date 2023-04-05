@@ -12,7 +12,7 @@
     "content_scripts": [
         {
             "matches": [
-                "*://moodle2022.wakayama-u.ac.jp/2023/",
+                "*://moodle2023.wakayama-u.ac.jp/2023/",
                 "*://moodle2022.wakayama-u.ac.jp/2022/"
             ],
             "css": [
