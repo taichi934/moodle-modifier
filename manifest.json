@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "moodle modifier",
     "description": "便利な機能を詰め込んだ moodle 用の拡張機能；自動ログイン、提出物が記載されたカレンダーの追加、必要のない講義の非表示、ダークモード対応、講義の並び替え、文字数カウンタの追加など",
-    "version": "1.7.5.1",
+    "version": "1.8.0.",
 
     "icons": {
         "48": "src/images/MoodleModifier-logo-icon48.png",
@@ -11,7 +11,10 @@
 
     "content_scripts": [
         {
-            "matches": ["*://moodle2022.wakayama-u.ac.jp/2022/"],
+            "matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/",
+                "*://moodle2023.wakayama-u.ac.jp/2023/"
+            ],
             "css": [
                 "src/css/dark_theme.css",
                 "src/css/calendar.css",
@@ -25,9 +28,15 @@
             "exclude_matches": [
                 "*://moodle2022.wakayama-u.ac.jp/2022/",
                 "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*",
+                "*://moodle2023.wakayama-u.ac.jp/2023/",
+                "*://moodle2023.wakayama-u.ac.jp/2023/login/index_form.html",
+                "*://moodle2023.wakayama-u.ac.jp/2023/login/index_form.html?*"
             ],
-            "matches": ["*://moodle2022.wakayama-u.ac.jp/2022/*"],
+            "matches": [
+                "*://moodle2022.wakayama-u.ac.jp/2022/*",
+                "*://moodle2023.wakayama-u.ac.jp/2023/*"
+            ],
             "css": ["src/css/dark_theme.css"],
             "js": ["dist/notTopPage.bundle.js"],
             "run_at": "document_start"
@@ -35,7 +44,9 @@
         {
             "matches": [
                 "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
-                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*"
+                "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*",
+                "*://moodle2023.wakayama-u.ac.jp/2023/login/index_form.html",
+                "*://moodle2023.wakayama-u.ac.jp/2023/login/index_form.html?*"
             ],
             "css": ["src/css/dark_theme_login.css"],
             "js": ["dist/login.bundle.js"],
@@ -44,7 +55,10 @@
     ],
 
     "permissions": ["storage", "declarativeNetRequest"],
-    "host_permissions": ["*://moodle2022.wakayama-u.ac.jp/*"],
+    "host_permissions": [
+        "*://moodle2022.wakayama-u.ac.jp/*",
+        "*://moodle2023.wakayama-u.ac.jp/*"
+    ],
 
     "declarative_net_request": {
         "rule_resources": [
@@ -65,7 +79,10 @@
     "web_accessible_resources": [
         {
             "resources": ["src/images/*"],
-            "matches": ["*://moodle2022.wakayama-u.ac.jp/*"]
+            "matches": [
+                "*://moodle2022.wakayama-u.ac.jp/*",
+                "*://moodle2023.wakayama-u.ac.jp/*"
+            ]
         }
     ]
 }
