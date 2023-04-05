@@ -9,5 +9,16 @@
             "urlFilter": "moodle2022.wakayama-u.ac.jp/2022/*^wadai-logo.png",
             "resourceTypes": ["image"]
         }
+    },
+    {
+        "id": 2,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "moodle2023.wakayama-u.ac.jp/2023/*^wadai-logo.png",
+            "resourceTypes": ["image"]
+        }
     }
 ]
