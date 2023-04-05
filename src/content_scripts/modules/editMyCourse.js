@@ -105,7 +105,13 @@ function showDisplayOnOffButton(event) {
         el.classList.toggle('edit-mode');
     }
     const titles = document.querySelectorAll('.coursebox > .info');
+    const teacherLists = document.querySelectorAll(
+        '.coursebox > .content > .teachers'
+    );
     for (const el of titles) {
+        el.classList.toggle('edit-mode'); // cssで要素の位置をずらしてる
+    }
+    for (const el of teacherLists) {
         el.classList.toggle('edit-mode'); // cssで要素の位置をずらしてる
     }
 }
