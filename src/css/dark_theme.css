@@ -269,6 +269,15 @@ p img {
     border-color: var(--borderColor);
 }
 
+/* 2024年以降に追加されたボーダーの色を調整 */
+.activity-item {
+    border: 1px solid var(--borderColor) !important;
+}
+/* 2024年以降 */
+.description .course-description-item {
+    background-color: var(--backgroundColor) !important;
+}
+
 /* 提出状況の表 */
 table.generaltable,
 .table {
