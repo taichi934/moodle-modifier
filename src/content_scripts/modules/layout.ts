@@ -54,14 +54,23 @@ export function changeLayout(): void {
 
 // カレンダーが下に移動するまでの画面幅を広く設定
 export function optimizeResponsive(): void {
-    const mainBox = document.getElementById('region-main-box');
-    if (mainBox) {
-        // rowとかの場所を再調整
-        mainBox.classList.add('row');
-        mainBox.classList.remove('col-12');
-        (mainBox.parentNode as HTMLElement).classList.remove('row');
+    // 2023年版までの場合
+    if (
+        location.hostname == 'moodle2023.wakayama-u.ca.jp' ||
+        location.hostname == 'moodle2022.wakayama-u.ca.jp'
+    ) {
+        const mainBox = document.getElementById('region-main-box');
+        if (mainBox) {
+            // rowとかの場所を再調整
+            mainBox.classList.add('row');
+            mainBox.classList.remove('col-12');
+            (mainBox.parentNode as HTMLElement).classList.remove('row');
 
-        mainBox.children[0]?.classList.add('col-md-8'); // mycourse section
-        mainBox.children[1]?.classList.add('col-md-4'); // rightNav section
+            mainBox.children[0]?.classList.add('col-md-8'); // mycourse section
+            mainBox.children[1]?.classList.add('col-md-4'); // rightNav section
+        }
+        return;
     }
+
+    // 2024年版以降の場合はあとで調整する
 }

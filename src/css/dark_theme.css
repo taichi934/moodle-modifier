@@ -76,7 +76,7 @@ header#page-header > div.col-12.pt-3.pb-3 {
     }
 }
 
-/* 左側のコンテンツ +++++++++++++++++++++++++++++++++++ */
+/* 左側のコンテンツ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #region-main {
     /* background-color: var(--headerBackgroundColor) !important; */
     background-color: var(--backgroundColor) !important;
@@ -217,8 +217,13 @@ p img {
     filter: brightness(0.8) contrast(1.2);
 }
 
-/* navRight */ /* logo */
-#block-region-side-pre .card {
+/* navRight（トップページの右側。ダッシュボードへのリンクやリンクがあるセクション） , 右側に移動した大学のlogo ++++++++++++++++++++++++++++++++*/
+/*
+~2023年まで #block-region-side-pre
+2024年から #block-region-side-post
+*/
+#block-region-side-pre .card,
+#block-region-side-post .card {
     background-color: var(--backgroundColor);
     /* background-color: var(--headerBackgroundColor); */
     border-color: var(--borderColor);
