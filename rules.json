@@ -20,5 +20,16 @@
             "urlFilter": "moodle2023.wakayama-u.ac.jp/2023/*^wadai-logo.png",
             "resourceTypes": ["image"]
         }
+    },
+    {
+        "id": 3,
+        "priority": 1,
+        "action": {
+            "type": "block"
+        },
+        "condition": {
+            "urlFilter": "moodle2024.wakayama-u.ac.jp/2024/*^wadai-logo.png",
+            "resourceTypes": ["image"]
+        }
     }
 ]
