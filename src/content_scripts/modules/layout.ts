@@ -78,7 +78,7 @@ export function optimizeResponsive(): void {
         }
         return;
     } else {
-        // 2024年版以降の場合はあとで調整する
+        // 2024年版以降の場合
         const pageContent = document.getElementById('page-content');
         if (pageContent) {
             pageContent.children[0]?.classList.remove('region-main');

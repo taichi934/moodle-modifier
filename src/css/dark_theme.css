@@ -250,7 +250,7 @@ p img {
     padding-right: 1rem;
 }
 #page-content :nth-child(1)#region-main-box {
-    flex: 1.5 !important;
+    flex: 1 !important;
 }
 
 /* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
