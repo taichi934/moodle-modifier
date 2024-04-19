@@ -21,15 +21,15 @@ export function changeLayout(): void {
         parentDiv.insertBefore(parentDiv.children[2]!, parentDiv.children[6]!);
     }
 
-    // header画像を右のナビゲーションの最上部に表示
+    // header(大学名)を右のナビゲーションの最上部に表示
     const navRight = document.getElementById('block-region-side-post');
     const header = document.getElementsByClassName(
         'card'
     )[0] as HTMLElement | null;
 
-    if (!navRight || !header || !navRight.children[1]) return;
+    if (!navRight || !header || !navRight.children[0]) return;
     header.style.marginBottom = '1rem';
-    navRight.insertBefore(header, navRight.children[1]);
+    navRight.insertBefore(header, navRight.children[0]);
 
     // リンク集を上に
     let links = navRight.children[6];
@@ -49,6 +49,13 @@ export function changeLayout(): void {
         // リンク集が余分なdivに囲まれてるから取り除く
         links = links?.children[0]?.children[1]?.children[0];
         links?.insertBefore(opacLink, links.children[1]!);
+
+        // 左セクションのナビゲーションを右セクションのマイコースの上に移動する
+        const navigation = document.getElementsByClassName(
+            'block_navigation'
+        )[0] as HTMLElement | null;
+        if (navigation)
+            navRight.insertBefore(navigation, navRight.children[4]!);
     }
 }
 
@@ -70,7 +77,7 @@ export function optimizeResponsive(): void {
             mainBox.children[1]?.classList.add('col-md-4'); // rightNav section
         }
         return;
+    } else {
+        // 2024年版以降の場合はあとで調整する
     }
-
-    // 2024年版以降の場合はあとで調整する
 }
