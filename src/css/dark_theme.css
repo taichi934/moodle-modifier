@@ -243,6 +243,15 @@ p img {
     padding-top: 0.25rem !important;
     padding-bottom: 0.25rem !important;
 }
+/* navRightを固定幅に */
+#page-content :nth-child(3).blockcolumn {
+    width: 300px !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#page-content :nth-child(1)#region-main-box {
+    flex: 1.5 !important;
+}
 
 /* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #page-header .card {
