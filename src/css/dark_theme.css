@@ -245,7 +245,7 @@ p img {
 }
 /* navRightを固定幅に */
 #page-content :nth-child(3).blockcolumn {
-    width: 300px !important;
+    width: 350px !important;
     padding-left: 1rem;
     padding-right: 1rem;
 }
