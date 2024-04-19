@@ -18,8 +18,8 @@ export function showCalendar(): void {
             calendarDiv.appendChild(calendar); // カレンダーをdiv(calendarDiv)で包む
         }
 
-        const navRight = document.getElementById('block-region-side-pre');
-        let links = navRight?.children[2];
+        const navRight = document.getElementById('block-region-side-post');
+        let links = navRight?.children[3];
         if (links) {
             navRight?.insertBefore(calendarDiv, links);
         }

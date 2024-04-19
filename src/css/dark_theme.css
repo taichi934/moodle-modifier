@@ -82,6 +82,9 @@ header#page-header > div.col-12.pt-3.pb-3 {
     background-color: var(--backgroundColor) !important;
     border-color: var(--borderColor) !important;
     border-radius: var(--radius);
+    border-width: 1px;
+    border-style: solid;
+    padding: 1.25rem;
     transition: 0.5s ease;
 }
 
@@ -233,7 +236,9 @@ p img {
     border-radius: var(--radius);
     transition: 0.3s;
 }
-
+#region-main-box {
+    flex-grow: 1 !important;
+}
 /* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #page-header .card {
     background-color: var(--headerBackgroundColor);

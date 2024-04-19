@@ -79,5 +79,14 @@ export function optimizeResponsive(): void {
         return;
     } else {
         // 2024年版以降の場合はあとで調整する
+        const pageContent = document.getElementById('page-content');
+        if (pageContent) {
+            pageContent.classList.add('col-12');
+            pageContent.children[0]?.classList.add('col-md-9'); // region main box
+            pageContent.children[0]?.classList.remove('region-main');
+            pageContent.children[1]?.classList.remove('columnleft'); // left column
+            pageContent.children[2]?.classList.add('col-md-3'); // right column
+            pageContent.children[2]?.classList.remove('columnright');
+        }
     }
 }
