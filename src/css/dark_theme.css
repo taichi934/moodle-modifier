@@ -216,9 +216,8 @@ p img {
     border-radius: var(--radius);
 }
 /* 画像をダークテーマに適した色味に変更 */
-.dark .logo > img,
-.dark .dash_btn img {
-    filter: brightness(0.8) contrast(1.2);
+.dark img {
+    filter: brightness(0.75) contrast(1.2);
 }
 
 /* navRight（トップページの右側。ダッシュボードへのリンクやリンクがあるセクション） , 右側に移動した大学のlogo ++++++++++++++++++++++++++++++++*/
