@@ -22,7 +22,7 @@ export function changeLayout(): void {
     }
 
     // header画像を右のナビゲーションの最上部に表示
-    const navRight = document.getElementById('block-region-side-pre');
+    const navRight = document.getElementById('block-region-side-post');
     const header = document.getElementsByClassName(
         'card'
     )[0] as HTMLElement | null;
@@ -32,22 +32,22 @@ export function changeLayout(): void {
     navRight.insertBefore(header, navRight.children[1]);
 
     // リンク集を上に
-    // let links = navRight.children[8];
-    let links = navRight.children[5];
+    let links = navRight.children[6];
     // 2022年度版ではリンクじゃない場所に挿入されるから、確認してから挿入
     if (links?.children[0]?.children[0]?.innerHTML === 'リンク') {
-        const myCourses = navRight.children[2]; // header画像がchildren[1]
+        const myCourses = navRight.children[3]; // header画像がchildren[1] (div.card)
 
+        // 右コラムのリンクとマイコースの位置を入れ替え、リンクを上に
         if (links && myCourses) {
             navRight.insertBefore(links, myCourses);
         }
 
         // リンク集の中に図書館OPACへのリンクを教育サポートシステムの下に配置
         const opacLink = document.createElement('p');
-        opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/?lang=0" target="_blank">和歌山大学図書館OPAC</a>`;
-
+        // opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/?lang=0" target="_blank">和歌山大学図書館OPAC</a>`;
+        opacLink.innerHTML = `<a href="https://opac.center.wakayama-u.ac.jp/opac/opac_search/">和歌山大学図書館OPAC</a>`;
         // リンク集が余分なdivに囲まれてるから取り除く
-        links = navRight.children[2]?.children[0]?.children[1]?.children[0];
+        links = links?.children[0]?.children[1]?.children[0];
         links?.insertBefore(opacLink, links.children[1]!);
     }
 }
