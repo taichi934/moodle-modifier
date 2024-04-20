@@ -18,10 +18,6 @@
     --hoverColor: #7e8388;
 }
 
-.coursebox {
-    padding: 2rem;
-}
-
 .display-off {
     display: none;
     position: absolute;
