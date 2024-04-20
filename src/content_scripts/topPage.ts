@@ -10,6 +10,13 @@ import {
     switchLogoWhenDarkModeChanges,
 } from './modules/switchLogo';
 
+// page headerの大学名をテキストではなく、ロゴの画像に入れ替える
+function modifyPageHeader(transLogoURL: string): void {
+    const univ_logo_parent = document.querySelector('#page-header .mr-auto');
+    if (univ_logo_parent)
+        univ_logo_parent.innerHTML = `<div class="logo"><img class="img-fluid" src="${transLogoURL}" alt="和歌山大学Moodleのロゴ"></div>`;
+}
+
 (() => {
     const transLogo = chrome.runtime.getURL(
         'src/images/wadai-logo-trans-complete.png'
@@ -19,6 +26,10 @@ import {
     listenDarkModeChange();
 
     window.addEventListener('DOMContentLoaded', () => {
+        // 2024年版はロゴが画像じゃなくなり、HTMLが変更されているため、従来と同じHTML構造に修正する
+        if (location.hostname === 'moodle2024.wakayama-u.ac.jp')
+            modifyPageHeader(transLogo);
+
         insertBackTransLogo(transLogo); // 画像のちらつきを防げる
         checkLogin();
         changeLayout();
