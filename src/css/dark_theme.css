@@ -88,10 +88,15 @@ header#page-header > div.col-12.pt-3.pb-3 {
     transition: 0.5s ease;
 }
 
-/* 2024年版から.courseboxにボーダーが追加されてるから、色をマッチさせる */
 .coursebox {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+
+    /* 2024年版から.courseboxにボーダーが追加されてるから、色をマッチさせる */
     border: 1px solid var(--borderColor) !important;
 }
+
 /* 編集モードでドラッグで覆われた時に青色のボーダーを上だけ表示.
 reorderCourses.jsで#dragoverを付けたり消したりする */
 .coursebox#dragover {
