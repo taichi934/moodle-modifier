@@ -76,13 +76,31 @@ header#page-header > div.col-12.pt-3.pb-3 {
     }
 }
 
-/* 左側のコンテンツ +++++++++++++++++++++++++++++++++++ */
+/* 左側のコンテンツ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 #region-main {
     /* background-color: var(--headerBackgroundColor) !important; */
     background-color: var(--backgroundColor) !important;
     border-color: var(--borderColor) !important;
     border-radius: var(--radius);
+    border-width: 1px;
+    border-style: solid;
+    padding: 1.25rem;
     transition: 0.5s ease;
+}
+
+.coursebox {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+
+    /* 2024年版から.courseboxにボーダーが追加されてるから、色をマッチさせる */
+    border: 1px solid var(--borderColor) !important;
+}
+
+/* 編集モードでドラッグで覆われた時に青色のボーダーを上だけ表示.
+reorderCourses.jsで#dragoverを付けたり消したりする */
+.coursebox#dragover {
+    border-top: 5px solid rgb(74, 74, 248) !important;
 }
 
 /* .odd はグレーに */
@@ -210,20 +228,39 @@ p.is-open {
 p img {
     border-radius: var(--radius);
 }
-.dark p img,
-.dark .logo > img {
-    border-radius: var(--radius);
-    /* ダークテーマに適した色味に変更 */
-    filter: brightness(0.8) contrast(1.2);
+/* 画像をダークテーマに適した色味に変更 */
+.dark img {
+    filter: brightness(0.75) contrast(1.2);
 }
 
-/* navRight */ /* logo */
-#block-region-side-pre .card {
+/* navRight（トップページの右側。ダッシュボードへのリンクやリンクがあるセクション） , 右側に移動した大学のlogo ++++++++++++++++++++++++++++++++*/
+/*
+~2023年まで #block-region-side-pre
+2024年から #block-region-side-post
+*/
+#block-region-side-pre .card,
+#block-region-side-post .card {
     background-color: var(--backgroundColor);
     /* background-color: var(--headerBackgroundColor); */
     border-color: var(--borderColor);
     border-radius: var(--radius);
     transition: 0.3s;
+}
+/* navRightの大学ロゴとダッシュボード
+ボタンの縦を縮小する */
+#block-region-side-post :nth-child(1) > .card-body,
+#block-region-side-post :nth-child(2) > .card-body {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
+/* navRightを固定幅に */
+#page-content :nth-child(3).blockcolumn {
+    width: 350px !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+#page-content :nth-child(1)#region-main-box {
+    flex: 1 !important;
 }
 
 /* コースのページ ++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -258,6 +295,15 @@ p img {
 .dark .course-content ul li.section.main {
     /* border-bottom-color: var(--borderColor); */
     border-color: var(--borderColor);
+}
+
+/* 2024年以降に追加されたボーダーの色を調整 */
+.activity-item {
+    border: 1px solid var(--borderColor) !important;
+}
+/* 2024年以降 */
+.description .course-description-item {
+    background-color: var(--backgroundColor) !important;
 }
 
 /* 提出状況の表 */

@@ -60,12 +60,12 @@ function onDragOver(event) {
     // event.targetだと子要素がトリガーされる
     // イベントはdraggableまでバブリングする
     // バブリングしてトリガーされた現在の要素は event.currentTarget
-    event.currentTarget.style.borderTop = '5px solid blue';
+    event.currentTarget.id = 'dragover';
 }
 
 // ドラッグされたもので覆われる側
 function onDragLeave(event) {
-    event.currentTarget.style.borderTop = '';
+    event.currentTarget.id = '';
 }
 
 // ドラッグされている側．捕まれてるもの
@@ -89,7 +89,8 @@ function onDrop(event) {
 
     const coveredCourse = event.currentTarget; // thisと同じ
     coveredCourse.parentNode.insertBefore(draggingCourse, coveredCourse);
-    coveredCourse.style.borderTop = '';
+
+    event.currentTarget.id = '';
 
     // コースの配色を更新
     remapOddEven();

@@ -20,6 +20,11 @@ div.calendarwrapper .controls a {
     display: none !important;
 }
 
+/* 2024年以降に年月が崩れたから修正 */
+.calendar-controls .current {
+    width: 76% !important;
+}
+
 .calendar-table table.calendarmonth {
     table-layout: fixed;
     /* word-break: break-all;
