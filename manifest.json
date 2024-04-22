@@ -45,7 +45,7 @@
                 "*://moodle2024.wakayama-u.ac.jp/2024/*",
                 "*://moodle2023.wakayama-u.ac.jp/2023/*",
                 "*://moodle2022.wakayama-u.ac.jp/2022/*",
-                "*://moodle.wakayama-u.ac.jp/2022/"
+                "*://moodle.wakayama-u.ac.jp/2022/*"
             ],
             "css": ["src/css/dark_theme.css"],
             "js": ["dist/notTopPage.bundle.js"],
@@ -59,8 +59,10 @@
                 "*://moodle2023.wakayama-u.ac.jp/",
                 "*://moodle2023.wakayama-u.ac.jp/2023/login/index_form.html",
                 "*://moodle2023.wakayama-u.ac.jp/2023/login/index_form.html?*",
+                "*://moodle2022.wakayama-u.ac.jp/",
                 "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html",
                 "*://moodle2022.wakayama-u.ac.jp/2022/login/index_form.html?*",
+                "*://moodle.wakayama-u.ac.jp/2022/",
                 "*://moodle.wakayama-u.ac.jp/2022/login/index_form.html",
                 "*://moodle.wakayama-u.ac.jp/2022/login/index_form.html?*"
             ],
@@ -72,10 +74,10 @@
 
     "permissions": ["storage", "declarativeNetRequest"],
     "host_permissions": [
-        "*://moodle2024.wakayama-u.ac.jp/",
+        "*://moodle2024.wakayama-u.ac.jp/*",
         "*://moodle2023.wakayama-u.ac.jp/*",
         "*://moodle2022.wakayama-u.ac.jp/*",
-        "*://moodle.wakayama-u.ac.jp/2022/"
+        "*://moodle.wakayama-u.ac.jp/*"
     ],
 
     "declarative_net_request": {
@@ -101,7 +103,7 @@
                 "*://moodle2024.wakayama-u.ac.jp/*",
                 "*://moodle2023.wakayama-u.ac.jp/*",
                 "*://moodle2022.wakayama-u.ac.jp/*",
-                "*://moodle.wakayama-u.ac.jp/2022/"
+                "*://moodle.wakayama-u.ac.jp/*"
             ]
         }
     ]
